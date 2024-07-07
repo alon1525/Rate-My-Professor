@@ -1,7 +1,10 @@
 /* App.css */
 
+/* App.css or your global CSS file */
+
 body {
   margin: 0;
+  padding-top: 3rem; /* Adjust based on the height of your navbar */
   font-family: Arial, sans-serif;
   background-size: cover;
   color: #ffffff;
@@ -12,15 +15,17 @@ h1, h2, p {
   padding: 0;
 }
 
+
 .container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   background-color: #405D72;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  flex: 1; /* Make the container take remaining space */
+  display: flex;
+  flex-direction: column;
 }
-
 
 .search-bar {
   display: flex;
@@ -59,6 +64,7 @@ h1, h2, p {
   flex-wrap: wrap;
   justify-content: center;
   margin: 20px;
+  flex: 1; /* Make the professor list take remaining space */
 }
 
 .professor-card {
@@ -88,10 +94,3 @@ h1, h2, p {
   color: #ffcc00; /* Yellow for rating */
   font-weight: bold;
 }
-/* .professor-card {
-  width: 100%;
-  border-radius: 4px;
-  position: relative;
-  height: 100%;
-  transition: 0.12s;
-} */
