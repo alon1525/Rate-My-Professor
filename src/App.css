@@ -1,0 +1,97 @@
+/* App.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-size: cover;
+  color: #ffffff;
+}
+
+h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #405D72;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #444;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  background-color: #333;
+  color: #fff;
+}
+
+.search-bar button {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #444;
+  background-color: #555;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.search-bar button:hover {
+  background-color: #777;
+}
+
+.professor-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.professor-card {
+  border: 1px solid #ddd; /* Lighter border */
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px;
+  width: 300px;
+  height: 200px;
+  text-align: center;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .11);
+  background-color: #FFF8F3;
+  color: #333; /* Dark text color */
+}
+
+.professor-card h2 {
+  font-size: 1.5rem;
+  color: #333; /* Dark text color */
+}
+
+.professor-card p {
+  color: #666; /* Medium gray text color */
+  margin: 8px 0;
+}
+
+.professor-card .rating {
+  color: #ffcc00; /* Yellow for rating */
+  font-weight: bold;
+}
+/* .professor-card {
+  width: 100%;
+  border-radius: 4px;
+  position: relative;
+  height: 100%;
+  transition: 0.12s;
+} */
