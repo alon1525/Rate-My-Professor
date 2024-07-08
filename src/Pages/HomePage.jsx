@@ -5,6 +5,7 @@ import "../App.css";
 import Navbar from "../Components/Navbar";
 
 export default function HomePage() {
+  const [navbarOpen, setNavBarOpen] = useState(false);
   const [professors, setProfessors] = useState([
     {
       name: "Ziv Av",
@@ -48,8 +49,49 @@ export default function HomePage() {
       knowledgeRating: 2,
       helpfulRating: 1,
     },
+    {
+      name: "Ziv Av",
+      department: "Computer Science",
+      teachingRating: 4,
+      knowledgeRating: 2,
+      helpfulRating: 1,
+    },
+    {
+      name: "Jane Smith",
+      department: "Mathematics",
+      teachingRating: 4,
+      knowledgeRating: 2,
+      helpfulRating: 1,
+    },
+    {
+      name: "Jane Smith",
+      department: "Mathematics",
+      teachingRating: 4,
+      knowledgeRating: 1,
+      helpfulRating: 1,
+    },
+    {
+      name: "Jane Smith",
+      department: "Mathematics",
+      teachingRating: 2,
+      knowledgeRating: 3,
+      helpfulRating: 1,
+    },
+    {
+      name: "Jane Smith",
+      department: "Mathematics",
+      teachingRating: 1,
+      knowledgeRating: 5,
+      helpfulRating: 1,
+    },
+    {
+      name: "Jane Smith",
+      department: "Mathematics",
+      teachingRating: 4,
+      knowledgeRating: 2,
+      helpfulRating: 1,
+    },
   ]);
-  const [navbarOpen, setNavBarOpen] = useState(false);
 
   const handleSearch = (query) => {
     const dummyProfessors = [
