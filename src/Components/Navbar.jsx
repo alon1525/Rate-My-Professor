@@ -59,16 +59,15 @@ font-size: 17px;
     border-bottom: 1px solid #fdcb6e;
   }
 
-  @media (max-width: 768px) {
-    display: none;
-  }
-}
+  @media (max-width: 1050px) {
+      display: none; /* Hide regular nav links on smaller screens */
+    }
 `;
 
 const BurgerWrapper = styled.div`
 margin: auto 0;
 
-@media (min-width: 769px) {
+@media (min-width: 1050px) {
   display: none;
 }
 `;

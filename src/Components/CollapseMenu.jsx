@@ -47,10 +47,11 @@ export default function CollapseMenu({...props}){
       }}
       >
         <NavLinks>
-          <li><a href="/" onClick={props.handleNavbar}>link n1</a></li>
-          <li><a href="/" onClick={props.handleNavbar}>link n2</a></li>
-          <li><a href="/" onClick={props.handleNavbar}>link n3</a></li>
-          <li><a href="/" onClick={props.handleNavbar}>link n4</a></li>
+          <li><a href="/" onClick={props.handleNavbar}>Add a Professor</a></li>
+          <li><a href="/" onClick={props.handleNavbar}>Professor List</a></li>
+          <li><a href="/" onClick={props.handleNavbar}>Add a Review</a></li>
+          <li><a href="/" onClick={props.handleNavbar}>Login</a></li>
+          <li><a href="/" onClick={props.handleNavbar}>Register</a></li>
         </NavLinks>
       </CollapseWrapper>
     );
