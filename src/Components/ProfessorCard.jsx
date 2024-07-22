@@ -63,9 +63,10 @@ export default function ProfessorCard({ professor }) {
     <ProfessorCardContainer>
       <ProfessorName>{professor.name}</ProfessorName>
       <ProfessorDepartment>{professor.department}</ProfessorDepartment>
-      <StarRating ratingName="Teaching" rating={professor.teachingRating} />
-      <StarRating ratingName="Knowledge" rating={professor.knowledgeRating} />
-      <StarRating ratingName="Helpfulness" rating={professor.helpfulnessRating} />
+      <StarRating ratingName="Clarity" rating={professor.clarity_avg} />
+      <StarRating ratingName="Interesting" rating={professor.interesting_avg} />
+      <StarRating ratingName="Organized" rating={professor.organize_avg} />
+      <StarRating ratingName="Fairness" rating={professor.fairness_avg} />
     </ProfessorCardContainer>
   );
 }

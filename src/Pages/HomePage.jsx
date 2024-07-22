@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import SearchBar from "../Components/SearchBar";
 import ProfessorList from "../Components/ProfessorList";
 import "../App.css";
@@ -6,107 +7,26 @@ import Navbar from "../Components/Navbar";
 
 export default function HomePage() {
   const [navbarOpen, setNavBarOpen] = useState(false);
-  const [professors, setProfessors] = useState([
-    {
-      name: "Ziv Av",
-      department: "Computer Science",
-      teachingRating: 4,
-      knowledgeRating: 2,
-      helpfulRating: 1,
-    },
-    {
-      name: "Jane Smith",
-      department: "Mathematics",
-      teachingRating: 4,
-      knowledgeRating: 2,
-      helpfulRating: 1,
-    },
-    {
-      name: "Jane Smith",
-      department: "Mathematics",
-      teachingRating: 4,
-      knowledgeRating: 1,
-      helpfulRating: 1,
-    },
-    {
-      name: "Jane Smith",
-      department: "Mathematics",
-      teachingRating: 2,
-      knowledgeRating: 3,
-      helpfulRating: 1,
-    },
-    {
-      name: "Jane Smith",
-      department: "Mathematics",
-      teachingRating: 1,
-      knowledgeRating: 5,
-      helpfulRating: 1,
-    },
-    {
-      name: "Jane Smith",
-      department: "Mathematics",
-      teachingRating: 4,
-      knowledgeRating: 2,
-      helpfulRating: 1,
-    },
-    {
-      name: "Ziv Av",
-      department: "Computer Science",
-      teachingRating: 4,
-      knowledgeRating: 2,
-      helpfulRating: 1,
-    },
-    {
-      name: "Jane Smith",
-      department: "Mathematics",
-      teachingRating: 4,
-      knowledgeRating: 2,
-      helpfulRating: 1,
-    },
-    {
-      name: "Jane Smith",
-      department: "Mathematics",
-      teachingRating: 4,
-      knowledgeRating: 1,
-      helpfulRating: 1,
-    },
-    {
-      name: "Jane Smith",
-      department: "Mathematics",
-      teachingRating: 2,
-      knowledgeRating: 3,
-      helpfulRating: 1,
-    },
-    {
-      name: "Jane Smith",
-      department: "Mathematics",
-      teachingRating: 1,
-      knowledgeRating: 5,
-      helpfulRating: 1,
-    },
-    {
-      name: "Jane Smith",
-      department: "Mathematics",
-      teachingRating: 4,
-      knowledgeRating: 2,
-      helpfulRating: 1,
-    },
-  ]);
+  const [professors, setProfessors] = useState([]);
 
-  const handleSearch = (query) => {
-    const dummyProfessors = [
-      { name: "John Doe", department: "Computer Science", rating: 4.5 },
-      { name: "Jane Smith", department: "Mathematics", rating: 3.8 },
-    ];
-    setProfessors(
-      dummyProfessors.filter((prof) =>
-        prof.name.toLowerCase().includes(query.toLowerCase())
-      )
-    );
-  };
+  async function fetchProfessors(query = ''){
+    if (query !== ''){
+      query = `?search=${query}`;
+    }
+      try {
+        const response = await axios.get(`http://localhost:4000/api/professors${query}`);
+        setProfessors(response.data);
+      } catch (error) {
+        console.error("There was an error fetching the professors!", error);
+      }
+  }
 
-  function handleNavbar(){
-    setNavBarOpen((navbarState) => {return !navbarState});
+  useEffect(() => {
+    fetchProfessors();
+  }, []);
+
+  function handleNavbar() {
+    setNavBarOpen((navbarState) => !navbarState);
   }
 
   return (
@@ -115,7 +35,7 @@ export default function HomePage() {
         navbarState={navbarOpen}
         handleNavbar={handleNavbar}
       />
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar onSearch={fetchProfessors} />
       <ProfessorList professors={professors} />
     </div>
   );

@@ -4,8 +4,9 @@ import '../App.css';
 export default function SearchBar({ onSearch }) {
   const [query, setQuery] = useState('');
 
-  const handleSearch = () => {
-    onSearch(query);
+  const handleSearch = async (newValue) => {
+    await setQuery(newValue);
+    onSearch(newValue);
   };
 
   return (
@@ -14,9 +15,8 @@ export default function SearchBar({ onSearch }) {
         type="text"
         placeholder="Search for a professor..."
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => {handleSearch(e.target.value);}}
       />
-      <button onClick={handleSearch}>Search</button>
     </div>
   );
 }
