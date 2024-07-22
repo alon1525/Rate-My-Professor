@@ -80,8 +80,8 @@ margin: auto 0;
           <NavLinks style={linkAnimation}>
             <a href="/">Add a Professor</a>
             <a href="/">Professor List</a>
-            <a href="/">Add a Review</a>
-            <a href="/">Login</a>
+            <a href="/new_review">Add a Review</a>
+            <a href="/login">Login</a>
             <a href="/">Register</a>
           </NavLinks>
           <BurgerWrapper>

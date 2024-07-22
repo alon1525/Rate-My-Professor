@@ -12,7 +12,7 @@ const ProfessorCardContainer = styled.div`
   width: 300px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff; /* White background */
+  background-color: #FFF8F3; /* White background */
   color: #333; /* Dark text color */
 `;
 
