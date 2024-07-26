@@ -21,11 +21,11 @@ export default function Navbar({...props}){
   
 const NavBar = styled(animated.nav)`
 position: fixed;
+z-index:4;
 width: 100%;
 top: 0;
 left: 0;
 background: #2d3436;
-z-index: 1;
 font-size: 1.4rem;
 `;
 

@@ -12,8 +12,15 @@ const ProfessorCardContainer = styled.div`
   width: 300px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #FFF8F3; /* White background */
+  background-color: #F7E7DC; /* Background color */
   color: #333; /* Dark text color */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  
+  &:hover {
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transform: scale(1.05); /* Slightly increase the size */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  }
 `;
 
 const ProfessorName = styled.h2`

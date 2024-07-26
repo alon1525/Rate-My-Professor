@@ -1,14 +1,9 @@
-/* App.css */
-
-/* App.css or your global CSS file */
 
 body {
   margin: 0;
   padding-top: 3rem; /* Adjust based on the height of your navbar */
-  font-family: Arial, sans-serif;
-  background-size: cover;
-  background-color: #405D72;
-  color: #ffffff;
+  font-family: 'Lexend', sans-serif;
+  background-color: #FFF8F3;
 }
 
 h1, h2, p {
@@ -16,55 +11,100 @@ h1, h2, p {
   padding: 0;
 }
 
-
 .container {
   margin: 0 auto;
-  padding: 20px;
-  background-color: #405D72;
+  background-color: #FFF8F3;
   border-radius: 8px;
   /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  Soft shadow for depth */
   flex: 1; /* Make the container take remaining space */
   display: flex;
   flex-direction: column;
+  min-height: 100vh; /* Ensures the container takes up at least the full viewport height */
+
+}
+
+.search-bar-container {
+  position: relative; /* Keeps the h2 and search bar correctly positioned */
+  background-image: url("Assets/SearchBarImage.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
+.search-bar-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit; /* Inherits the background image from the parent */
+  filter: blur(5px); /* Adjust the blur level */
+  z-index: -1; /* Places the pseudo-element behind other content */
+}
+
+.search-bar-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+  z-index: 0; /* Overlay sits on top of the blurred image */
+}
+
+.search-bar-container h2 {
+  position: relative; /* Ensure it respects the z-index stacking context */
+  z-index: 2; /* Higher z-index to place it above the blurred image and dark overlay */
+  color: #fff; /* Change the text color to make it stand out against the background */
+  font-size: 2rem; /* Adjust size as needed */
+  margin-top: 150px; /* Space from the top of the container */
+  text-align: center; /* Center align text */
 }
 
 .search-bar {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
+  display: flex; /* Use flexbox to align items in a row */
+  align-items: center; /* Center items vertically */
+  position: absolute; /* Position relative to the container */
+  top: 50%; /* Centers vertically */
+  left: 50%; /* Centers horizontally */
+  height: 10%;
+  width: 40%;
+  padding: 10px;
+  margin-top:70px;
+  border-radius: 40px;
+  background-color: #f6f6f6;
+  transform: translate(-50%, -50%); /* Centers the search bar precisely */
+  z-index: 1; /* Lower z-index to ensure it's below the h2 element */
+}
+
+.search-bar span {
+  margin-right: 10px; /* Space between the icon and the input */
+  font-size: 24px; /* Adjust the size of the icon */
+  padding-left: 10px;
 }
 
 .search-bar input {
-  width: 300px;
+  width: 100%; /* Adjust width as needed */
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #444;
-  border-radius: 4px 0 0 4px;
+  font-family: 'Lexend', sans-serif;
+  color: #333333;
+  margin: 10px;
   outline: none;
-  background-color: #333;
-  color: #fff;
+  border: none;
+  background-color: transparent;
+  box-sizing: border-box;
 }
 
-.search-bar button {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #444;
-  background-color: #555;
-  color: white;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  outline: none;
-}
-
-.search-bar button:hover {
-  background-color: #777;
-}
 
 .professor-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 20px;
+  margin-top: 10px;
   flex: 1; /* Make the professor list take remaining space */
 }
 
@@ -77,7 +117,7 @@ h1, h2, p {
   height: 200px;
   text-align: center;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .11);
-  background-color: #FFF8F3;
+  background-color: #F7E7DC;
   color: #333; /* Dark text color */
 }
 
@@ -94,4 +134,27 @@ h1, h2, p {
 .professor-card .rating {
   color: #ffcc00; /* Yellow for rating */
   font-weight: bold;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #F7E7DC;
+  color: #333;
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid #ddd; /* Optional: adds a top border for separation */
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    width: 80%; /* Adjust width on smaller screens */
+    padding: 8px;
+  }
+
+  .search-bar input {
+    font-size: 14px; /* Reduce font size on smaller screens */
+    padding: 8px;
+  }
 }
