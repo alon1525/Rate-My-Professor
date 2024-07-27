@@ -9,6 +9,7 @@ const CollapseWrapper = styled(animated.div)`
   top: 4.5rem;
   left: 0;
   right: 0;
+  
 `;
 
 const NavLinks = styled.ul`
@@ -17,6 +18,7 @@ const NavLinks = styled.ul`
 
   & li {
     transition: all 300ms linear 0s;
+    
   }
 
   & a {
@@ -36,10 +38,9 @@ const NavLinks = styled.ul`
 
 export default function CollapseMenu({...props}){
   const { open } = useSpring({ open: props.navbarState ? 0 : 1 });
-
   if (props.navbarState === true) {
     return (
-      <CollapseWrapper style={{
+      <CollapseWrapper className="wrapper" style={{
         transform: open.interpolate({
           range: [0, 0.2, 0.3, 1],
           output: [0, -20, 0, -200],
@@ -56,6 +57,7 @@ export default function CollapseMenu({...props}){
       </CollapseWrapper>
     );
   }
+
   return null;
 };
 

@@ -33,6 +33,7 @@ export default function HomePage() {
   return (
     <>
     <div className="container">
+      {console.log(navbarOpen)}
       <Navbar
         navbarState={navbarOpen}
         handleNavbar={handleNavbar}

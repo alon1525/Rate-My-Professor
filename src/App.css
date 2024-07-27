@@ -147,6 +147,11 @@ h1, h2, p {
   box-sizing: border-box;
 }
 
+.wrapper{
+  z-index: 4;
+}
+
+
 @media (max-width: 768px) {
   .search-bar {
     width: 80%; /* Adjust width on smaller screens */

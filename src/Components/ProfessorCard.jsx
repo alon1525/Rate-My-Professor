@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
@@ -67,6 +68,7 @@ const StarRating = ({ ratingName, rating }) => {
 
 export default function ProfessorCard({ professor }) {
   return (
+    <Link to={`/professor/${professor.name}`} style={{ textDecoration: 'none' }}>
     <ProfessorCardContainer>
       <ProfessorName>{professor.name}</ProfessorName>
       <ProfessorDepartment>{professor.department}</ProfessorDepartment>
@@ -75,5 +77,6 @@ export default function ProfessorCard({ professor }) {
       <StarRating ratingName="Organized" rating={professor.organize_avg} />
       <StarRating ratingName="Fairness" rating={professor.fairness_avg} />
     </ProfessorCardContainer>
+    </Link>
   );
 }

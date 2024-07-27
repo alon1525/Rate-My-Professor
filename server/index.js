@@ -55,6 +55,33 @@ app.get("/api/professors", async (req, res) => {
   }
 });
 
+app.get("/api/professor", async (req, res) => {
+  const professorId = decodeURIComponent(req.body.name);
+  console.log(professorId);
+  const query = "SELECT * FROM professors WHERE name = ?";
+
+  try {
+    db.query(query, [professorId], (err, results) => {
+      if (err) {
+        // Error handling within the query callback
+        console.error("Error executing query:", err);
+        return res.status(500).send("Server error");
+      }
+
+      if (results.length === 0) {
+        // Handle case where no professor is found with the provided ID
+        return res.status(404).send("Professor not found");
+      }
+
+      res.json(results[0]); // Return the first (and only) result
+    });
+  } catch (error) {
+    // Catch any unexpected errors
+    console.error("Unexpected error:", error);
+    res.status(500).send("Server error");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
