@@ -2,12 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchBar from "../Components/SearchBar";
 import ProfessorList from "../Components/HomePage/ProfessorList";
-import Navbar from "../Components/Navbar/Navbar.jsx";
-import Footer from "../Components/Footer.jsx"; 
 import "../App.css";
 
 export default function HomePage() {
-  const [navbarOpen, setNavBarOpen] = useState(false);
   const [professors, setProfessors] = useState([]);
 
   async function fetchProfessors(query = '') {
@@ -26,22 +23,14 @@ export default function HomePage() {
     fetchProfessors();
   }, []);
 
-  function handleNavbar() {
-    setNavBarOpen((navbarState) => !navbarState);
-  }
+
 
   return (
     <>
     <div className="container">
-      {console.log(navbarOpen)}
-      <Navbar
-        navbarState={navbarOpen}
-        handleNavbar={handleNavbar}
-      />
       <SearchBar onSearch={fetchProfessors} />
       <ProfessorList professors={professors} />
     </div>
-    <Footer /> {/* Add Footer component */}
     </>
   );
 }

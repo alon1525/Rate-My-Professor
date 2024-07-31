@@ -3,7 +3,6 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import OverallScore from "../Components/OverallScore/OverallScore.jsx";
-import Navbar from "../Components/Navbar/Navbar.jsx";
 import ReviewList from "../Components/ReviewList.jsx";
 import ReviewButton from "../Components/ReviewButton/ReviewButton.jsx";
 
@@ -14,6 +13,7 @@ const BigContainer = styled.div`
   align-items: center; /* Center horizontally */
   padding-top: 70px;
   width: 100%; /* Full width */
+  background-color: #FFF8F3;
 `;
 
 const Container = styled.div`
@@ -71,7 +71,6 @@ const HorizontalLine = styled.hr`
 
 export default function ProfessorPage() {
   const location = useLocation();
-  const [navbarOpen, setNavBarOpen] = useState(false);
   const [professor, setProfessor] = useState({});
 
   // Extract the professor name from the path
@@ -94,16 +93,9 @@ export default function ProfessorPage() {
     fetchProfessor();
   }, [professorName]);
 
-  function handleNavbar() {
-    setNavBarOpen((navbarState) => !navbarState);
-  }
 
   return (
     <BigContainer>
-      <Navbar
-        navbarState={navbarOpen}
-        handleNavbar={handleNavbar}
-      />
       <MediaQueryStyles>
         <Container>
           <ProfessorDetails>

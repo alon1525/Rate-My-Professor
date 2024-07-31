@@ -4,13 +4,18 @@ body {
   padding-top: 3rem; /* Adjust based on the height of your navbar */
   font-family: 'Lexend', sans-serif;
   background-color: #FFF8F3;
+  height: 100%;
 }
-
+html{
+  height: 100%;
+}
 h1, h2, p {
   margin: 0;
   padding: 0;
 }
-
+main {
+  flex: 1; /* Allows main content to take up remaining space */
+}
 .container {
   margin: 0 auto;
   background-color: #FFF8F3;
@@ -20,7 +25,12 @@ h1, h2, p {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Ensures the container takes up at least the full viewport height */
+}
 
+.root-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures container stretches to full viewport height */
 }
 
 .search-bar-container {
