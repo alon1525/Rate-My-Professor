@@ -2,7 +2,42 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import Navbar from "../Components/Navbar";
+import OverallScore from "../Components/OverallScore/OverallScore.jsx";
+import Navbar from "../Components/Navbar/Navbar.jsx";
+import ReviewList from "../Components/ReviewList.jsx";
+import ReviewButton from "../Components/ReviewButton/ReviewButton.jsx";
+
+// Center the container horizontally within the page
+const BigContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  padding-top: 70px;
+  width: 100%; /* Full width */
+`;
+
+const Container = styled.div`
+  display: flex;
+  padding: 0 20px; /* Add padding for small screens */
+  justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  max-width: 1200px; /* Set a maximum width for better alignment */
+  width: 100%; /* Full width for flexibility */
+  gap: 70px;
+`;
+
+const ProfessorDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px; /* Space between columns */
+  flex: 1 1 300px; /* Allow flexibility in sizing */
+`;
+
+const OverallScoreContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 300px; /* Allow flexibility in sizing */
+`;
 
 const ProfessorName = styled.h1`
   font-size: 2rem;
@@ -14,40 +49,29 @@ const ProfessorDetail = styled.p`
   color: #666;
 `;
 
-const StarRatingContainer = styled.div`
-  margin-top: 10px;
-`;
-
-const RatingName = styled.p`
-  font-weight: bold;
-  margin-bottom: 4px;
-`;
-
-const StarRating = ({ ratingName, rating }) => {
-  const renderStars = (rating) => {
-    const stars = [];
-
-    for (let i = 0; i < 5; i++) {
-      if (i < rating) {
-        stars.push("⭐");
-      } else {
-        stars.push("☆");
-      }
+// Media query for smaller screens
+const MediaQueryStyles = styled.div`
+  @media (max-width: 768px) {
+    ${Container} {
+      flex-direction: column; /* Stack items vertically */
+      gap: 20px; /* Adjust space between items */
     }
+  }
+`;
 
-    return stars;
-  };
-
-  return (
-    <StarRatingContainer>
-      <RatingName>{ratingName}</RatingName>
-      <div>{renderStars(rating)}</div>
-    </StarRatingContainer>
-  );
-};
+// Styled horizontal line
+const HorizontalLine = styled.hr`
+  width: 100%; /* Full width of the parent container */
+  max-width: 1200px; /* Match the width of the Container */
+  margin: 40px 0; /* Adjust top and bottom margin as needed */
+  border: 0;
+  font-size: 30px;
+  border-top: 4px solid #2d3436; /* Change thickness to 2px */
+`;
 
 export default function ProfessorPage() {
   const location = useLocation();
+  const [navbarOpen, setNavBarOpen] = useState(false);
   const [professor, setProfessor] = useState({});
 
   // Extract the professor name from the path
@@ -58,7 +82,7 @@ export default function ProfessorPage() {
     async function fetchProfessor() {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/professors?search=${professorName}`
+          `http://localhost:4000/api/professors?search=${professorName}` // Handle potential multiple results appropriately
         );
         setProfessor(response.data[0]);
         console.log(response.data[0]);
@@ -70,20 +94,30 @@ export default function ProfessorPage() {
     fetchProfessor();
   }, [professorName]);
 
+  function handleNavbar() {
+    setNavBarOpen((navbarState) => !navbarState);
+  }
+
   return (
-    <div className="big-container">
-      <Navbar />
-      <div className="container">
-        <ProfessorName>{professor.name}</ProfessorName>
-        <ProfessorDetail>Department: {professor.department}</ProfessorDetail>
-        <StarRating ratingName="Clarity" rating={professor.clarity_avg} />
-        <StarRating
-          ratingName="Interesting"
-          rating={professor.interesting_avg}
-        />
-        <StarRating ratingName="Organized" rating={professor.organize_avg} />
-        <StarRating ratingName="Fairness" rating={professor.fairness_avg} />
-      </div>
-    </div>
+    <BigContainer>
+      <Navbar
+        navbarState={navbarOpen}
+        handleNavbar={handleNavbar}
+      />
+      <MediaQueryStyles>
+        <Container>
+          <ProfessorDetails>
+            <ProfessorName>{professor.name}</ProfessorName>
+            <ProfessorDetail>{professor.department}</ProfessorDetail>
+            <ReviewButton width="300px" marginTop={"126px"}></ReviewButton>
+          </ProfessorDetails>
+          <OverallScoreContainer>
+            <OverallScore professor={professor} />
+          </OverallScoreContainer>
+        </Container>
+        <HorizontalLine />
+      </MediaQueryStyles>
+      <ReviewList/>
+    </BigContainer>
   );
 }

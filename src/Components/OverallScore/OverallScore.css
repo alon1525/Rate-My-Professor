@@ -1,0 +1,77 @@
+.card {
+    width: 400px; /* Adjusted width */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    overflow: hidden;
+    margin-left: auto; /* Moves the card to the right */
+    margin-right: 20px; /* Adjusts the space from the right edge */
+  }
+  
+  .header {
+    background-color: #2d3436;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around; /* Space out the items evenly */
+    align-items: center; /* Center items vertically */
+    height: 10px; /* Adjusted height for better alignment */
+  }
+  
+  .evaluations h2 {
+    font-size: 15px;
+  }
+  
+  .body {
+    padding: 20px;
+    overflow: auto; /* Ensure no content overflow issues */
+  }
+  
+  .skill {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .skill-name {
+    width: 150px; /* Adjusted for more space */
+    font-size: 16px;
+  }
+  
+  .skill-level {
+    flex: 1; /* Take up remaining space */
+    height: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 10px;
+  }
+  
+  .skill-percent {
+    background-color: #333;
+    height: 100%;
+    width: 0; /* Initial width */
+    transition: width 0.3s ease-in-out; /* Smooth sliding effect */
+    animation: fillUp 1s forwards; /* Apply animation */
+  }
+  
+  .skill-percent-number {
+    margin-left: 20px;
+    font-size: 16px;
+  }
+  
+  div h2 span {
+    font-size: smaller;
+  }
+  
+  /* Keyframe animation for filling up */
+  @keyframes fillUp {
+    from {
+      width: 0;
+    }
+    to {
+      width: var(--final-width); /* Use a custom property for final width */
+    }
+  }
+  

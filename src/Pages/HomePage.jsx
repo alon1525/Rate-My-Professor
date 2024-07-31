@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchBar from "../Components/SearchBar";
-import ProfessorList from "../Components/ProfessorList";
-import Navbar from "../Components/Navbar.jsx";
+import ProfessorList from "../Components/HomePage/ProfessorList";
+import Navbar from "../Components/Navbar/Navbar.jsx";
 import Footer from "../Components/Footer.jsx"; 
 import "../App.css";
 
