@@ -28,6 +28,8 @@
     transition: background 0.3s;
     color: var(--color);
     background: var(--bg, var(--background));
+    max-width: 220px;
+    max-height: 54px;
   }
   
   .continue-application > div {
@@ -195,4 +197,3 @@
     --pbd: .15s;
     --pex: -24px;
   }
-  

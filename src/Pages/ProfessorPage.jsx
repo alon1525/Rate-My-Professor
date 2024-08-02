@@ -1,115 +1,56 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import './ProfessorPage.css'; // Import the CSS file
 import OverallScore from "../Components/OverallScore/OverallScore.jsx";
-import ReviewList from "../Components/ReviewList.jsx";
+import ReviewList from "../Components/Review/ReviewList.jsx";
 import ReviewButton from "../Components/ReviewButton/ReviewButton.jsx";
 
-// Center the container horizontally within the page
-const BigContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center horizontally */
-  padding-top: 70px;
-  width: 100%; /* Full width */
-  background-color: #FFF8F3;
-`;
-
-const Container = styled.div`
-  display: flex;
-  padding: 0 20px; /* Add padding for small screens */
-  justify-content: center;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  max-width: 1200px; /* Set a maximum width for better alignment */
-  width: 100%; /* Full width for flexibility */
-  gap: 70px;
-`;
-
-const ProfessorDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px; /* Space between columns */
-  flex: 1 1 300px; /* Allow flexibility in sizing */
-`;
-
-const OverallScoreContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 300px; /* Allow flexibility in sizing */
-`;
-
-const ProfessorName = styled.h1`
-  font-size: 2rem;
-  color: #333;
-`;
-
-const ProfessorDetail = styled.p`
-  font-size: 1.2rem;
-  color: #666;
-`;
-
-// Media query for smaller screens
-const MediaQueryStyles = styled.div`
-  @media (max-width: 768px) {
-    ${Container} {
-      flex-direction: column; /* Stack items vertically */
-      gap: 20px; /* Adjust space between items */
-    }
-  }
-`;
-
-// Styled horizontal line
-const HorizontalLine = styled.hr`
-  width: 100%; /* Full width of the parent container */
-  max-width: 1200px; /* Match the width of the Container */
-  margin: 40px 0; /* Adjust top and bottom margin as needed */
-  border: 0;
-  font-size: 30px;
-  border-top: 4px solid #2d3436; /* Change thickness to 2px */
-`;
-
 export default function ProfessorPage() {
-  const location = useLocation();
+  const { name } = useParams();
   const [professor, setProfessor] = useState({});
+  const [reviews, setReviews] = useState([]);
 
   // Extract the professor name from the path
-  const pathParts = location.pathname.split("/");
-  const professorName = pathParts[pathParts.length - 1];
+  const professorName = encodeURIComponent(name.split("/").pop());
 
   useEffect(() => {
-    async function fetchProfessor() {
+    async function fetchData() {
       try {
-        const response = await axios.get(
-          `http://localhost:4000/api/professors?search=${professorName}` // Handle potential multiple results appropriately
+        // Fetch professor details
+        const professorResponse = await axios.get(
+          `http://localhost:4000/api/professor?name=${professorName}`
         );
-        setProfessor(response.data[0]);
-        console.log(response.data[0]);
+        setProfessor(professorResponse.data);
+
+        // Fetch reviews for the professor
+        const reviewsResponse = await axios.get(
+          `http://localhost:4000/api/reviews?professorId=${professorResponse.data.professor_id}`
+        );
+        setReviews(reviewsResponse.data);
+        
       } catch (error) {
-        console.error("There was an error fetching the professor data!", error);
+        console.error("There was an error fetching the professor or reviews data!", error);
       }
     }
 
-    fetchProfessor();
+    fetchData();
   }, [professorName]);
 
-
   return (
-    <BigContainer>
-      <MediaQueryStyles>
-        <Container>
-          <ProfessorDetails>
-            <ProfessorName>{professor.name}</ProfessorName>
-            <ProfessorDetail>{professor.department}</ProfessorDetail>
-            <ReviewButton width="300px" marginTop={"126px"}></ReviewButton>
-          </ProfessorDetails>
-          <OverallScoreContainer>
-            <OverallScore professor={professor} />
-          </OverallScoreContainer>
-        </Container>
-        <HorizontalLine />
-      </MediaQueryStyles>
-      <ReviewList/>
-    </BigContainer>
+    <div className="big-container">
+      <div className="top-container">
+        <div className="professor-details">
+          <h1 className="professor-name">{professor.name}</h1>
+          <p className="professor-detail">{professor.department}</p>
+          <ReviewButton width="300px" marginTop={"20px"} name={professor.name} />
+        </div>
+        <div className="overall-score-container">
+          <OverallScore professor={professor} />
+        </div>
+      </div>
+      <hr className="horizontal-line" />
+      {reviews.length > 0 ? <ReviewList reviews={reviews} /> : <h1>No Reviews</h1>}
+    </div>
   );
 }

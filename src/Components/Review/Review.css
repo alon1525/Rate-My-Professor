@@ -1,0 +1,61 @@
+/* ReviewList.css */
+.review-list-container {
+    display: flex;
+    flex-direction: column;  /* Stack reviews vertically */
+    align-items: center;     /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    width: 100%;
+    padding: 0 20px;        /* Optional: add padding for smaller screens */
+  }
+  /* Review.css */
+.review-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;  /* Rounded corners */
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;  /* Take full width of the parent */
+    max-width: 800px;  /* Limit maximum width */
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth transition for hover effect */
+  }
+  
+  .review-container:hover {
+    transform: translateY(-5px);  /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  /* Stronger shadow on hover */
+  }
+  
+  .review-headline {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .review-body {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .review-date {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 20px;
+  }
+  
+  .review-score {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2d3436;
+    margin-bottom: 20px;  /* Ensure space between score and other elements */
+  }
+  
+  .score-label {
+    margin-right: 10px;
+  }
+  

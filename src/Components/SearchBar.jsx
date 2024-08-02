@@ -6,7 +6,6 @@ export default function SearchBar({ onSearch }) {
 
   function handleSearch(newValue) {
     setQuery(newValue);
-    onSearch(newValue);
   }
 
   return (

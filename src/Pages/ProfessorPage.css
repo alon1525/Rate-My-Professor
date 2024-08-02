@@ -1,0 +1,60 @@
+/* ProfessorPage.css */
+.big-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    width: 100%;
+    background-color: #FFF8F3;
+  }
+  
+  .top-container {
+    display: flex;
+    flex-direction: row; /* Ensure items are in a row */
+    justify-content: space-between; /* Distribute space between items */
+    max-width: 1200px;
+    gap: 100px; /* Space between professor-details and overall-score-container */
+    flex-wrap: nowrap; /* Prevent wrapping of items */
+  }
+  
+  .professor-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow to grow and fill space */
+  }
+  
+  .overall-score-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow to grow and fill space */
+
+  }
+  
+  .professor-name {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .professor-detail {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .media-query-styles {
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  }
+  
+  .horizontal-line {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px 0;
+    border: 0;
+    font-size: 30px;
+    border-top: 4px solid #2d3436;
+  }
+  

@@ -12,12 +12,9 @@ export default function OverallScore({ professor }) {
       });
   }
 
-  const skills = getSkills();
+  let skills = getSkills();
+  skills.pop();
 
-  function calculateAverage() {
-    const sum = skills.reduce((acc, skill) => acc + skill.value, 0);
-    return (sum / skills.length).toFixed(2); // Return average, formatted
-  }
 
   // Mock evaluation count (update as needed)
   const evaluationCount = 10;
@@ -25,7 +22,7 @@ export default function OverallScore({ professor }) {
   return (
     <div className="card">
       <div className="header">
-        <h2>{calculateAverage()}<span>/5</span></h2>
+        <h2>{professor.total_avg}<span>/5</span></h2>
         <div className='evaluations'>
           <StarRating />
           <h2>{evaluationCount} Evaluations</h2>
@@ -33,8 +30,8 @@ export default function OverallScore({ professor }) {
       </div>
       <div className="body">
         {skills.map(skill => (
-          <div className="skill" key={skill.name}>
-            <div className="skill-name">{skill.name}</div>
+          <div className="skill" key={skill.name.charAt(0).toUpperCase() + skill.name.slice(1)}>
+            <div className="skill-name">{skill.name.charAt(0).toUpperCase() + skill.name.slice(1)}</div>
             <div className="skill-level">
               <div
                 className="skill-percent"

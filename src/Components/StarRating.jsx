@@ -1,18 +1,25 @@
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import styled from "styled-components";
 
-
-export default function StarRating({ ratingName, rating }) {
-
-  
+export default function StarRating({ ratingName, rating, margin = "10px" }) {
+  // Update the StarRatingContainer to accept marginTop as a prop
+  const StarRatingContainer = styled.div`
+    margin-top: ${margin};
+  `;
+  console.log(rating);
   function renderStars(rating) {
     const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
 
     for (let i = 0; i < 5; i++) {
-      if (i < rating) {
+      if (i < fullStars) {
         stars.push(<FontAwesomeIcon icon={solidStar} key={i} />);
+      } else if (i === fullStars && hasHalfStar) {
+        stars.push(<HalfStar key={i} />);
       } else {
         stars.push(<FontAwesomeIcon icon={regularStar} key={i} />);
       }
@@ -29,11 +36,22 @@ export default function StarRating({ ratingName, rating }) {
   );
 }
 
-const StarRatingContainer = styled.div`
-  margin-top: 10px;
-`;
-
 const RatingName = styled.p`
   font-weight: bold;
   margin-bottom: 4px;
+`;
+
+const HalfStar = styled(FontAwesomeIcon).attrs({
+  icon: solidStar,
+})`
+  position: relative;
+  &:before {
+    content: "\f005"; // Unicode for star icon
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    display: block;
+    color: #333;
+  }
 `;

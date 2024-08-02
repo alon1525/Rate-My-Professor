@@ -1,0 +1,54 @@
+.CTACard__StyledCTACard-sc-1l1zcl0-0 {
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  font: inherit;
+  vertical-align: baseline;
+  color: rgb(21, 21, 21);
+  font-family: HelveticaNeue, arial;
+  font-size: 14px;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  max-height: 320px;
+}
+
+.CTACard__CardImage-sc-1l1zcl0-1 {
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  color: rgb(21, 21, 21);
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  font: inherit;
+  vertical-align: baseline;
+  height: 220px;
+  margin-bottom: 24px;
+  max-width: 100%;
+  width: 340px;
+}
+
+.CTACard__CardText-sc-1l1zcl0-2 {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  padding: 0px;
+  border: 0px;
+  font: inherit;
+  vertical-align: baseline;
+  color: rgb(21, 21, 21);
+  font-size: 26px;
+  line-height: 26px;
+  margin: 0px auto;
+  max-width: 300px;
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+}
+

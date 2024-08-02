@@ -1,25 +1,19 @@
-import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer";
 import "../App.css";
-
+import SignInButton from "../Components/SignInButton";
 export default function Root() {
-  const [navbarOpen, setNavBarOpen] = useState(false);
+  return (
+    <div>
+      <div className="root-container">
+      <SignInButton where={"/"} text="Home" align={"left"}></SignInButton>
+      <SignInButton where={"/login"} text="Login" align={"right"}></SignInButton>
 
-  function handleNavbar() {
-    setNavBarOpen((navbarState) => !navbarState);
-  }
-
-  return (<>
-    <div className="root-container">
-      <Navbar navbarState={navbarOpen} handleNavbar={handleNavbar} />
+      </div>
       <main>
         <Outlet />
       </main>
-    </div>
       <Footer />
-    </>
-
+    </div>
   );
 }

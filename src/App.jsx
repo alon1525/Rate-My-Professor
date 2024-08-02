@@ -4,7 +4,9 @@ import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
 import ProfessorPage from './Pages/ProfessorPage.jsx';
 import Root from './Pages/Root.jsx';
+import ErrorPage from './Pages/ErrorPage.jsx';
 import './App.css';
+import ReviewForm from './Pages/ReviewForm.jsx';
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
         <Route path="/" element={<Root />}>
           <Route index element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="professor/:name" element={<ProfessorPage />} /> {/* Route for individual professor */}
+          <Route path="professor/:name" element={<ProfessorPage />} />
+          <Route path="*" element={<ErrorPage />} /> {/* Catch-all route for errors */}
+          <Route path="reviewForm/:name" element={<ReviewForm />} />
         </Route>
       </Routes>
     </Router>
