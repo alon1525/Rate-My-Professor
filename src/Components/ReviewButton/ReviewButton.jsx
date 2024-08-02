@@ -1,14 +1,13 @@
 import React from "react";
 import "./ReviewButton.css";
-import { Link } from "react-router-dom";
 
-export default function ReviewButton({ width, marginTop,name }) {
+export default function ReviewButton({ width, marginTop,name, onClick }) {
   return (
     <div style={{ marginTop: marginTop, display: 'inline-block' }}>
-      <Link to={`/reviewForm/${name}`} className="link-wrapper">
         <button
           className="continue-application"
           style={{ width: width }} // Apply width prop here
+          onClick={onClick}
         >
           <div>
             <div className="pencil"></div>
@@ -23,7 +22,6 @@ export default function ReviewButton({ width, marginTop,name }) {
           </div>
           Review
         </button>
-      </Link>
     </div>
   );
 }

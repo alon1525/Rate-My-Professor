@@ -6,10 +6,7 @@ import styled from "styled-components";
 
 export default function StarRating({ ratingName, rating, margin = "10px" }) {
   // Update the StarRatingContainer to accept marginTop as a prop
-  const StarRatingContainer = styled.div`
-    margin-top: ${margin};
-  `;
-  console.log(rating);
+
   function renderStars(rating) {
     const stars = [];
     const fullStars = Math.floor(rating);
@@ -54,4 +51,7 @@ const HalfStar = styled(FontAwesomeIcon).attrs({
     display: block;
     color: #333;
   }
+`;
+const StarRatingContainer = styled.div`
+margin-top: 0px;
 `;

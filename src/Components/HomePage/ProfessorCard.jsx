@@ -4,6 +4,7 @@ import './ProfessorCard.css';
 import StarRating from '../StarRating.jsx';
 
 export default function ProfessorCard({ professor }) {
+
   return (
     <Link to={`/professor/${professor.name}`} style={{ textDecoration: 'none' }}>
       <div className="professor-card-container">

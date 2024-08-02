@@ -180,8 +180,6 @@ main {
 }
 
 
-
-
 @media (max-width: 768px) {
   .search-bar {
     width: 80%; /* Adjust width on smaller screens */
@@ -193,3 +191,4 @@ main {
     padding: 8px;
   }
 }
+

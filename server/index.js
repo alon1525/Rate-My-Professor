@@ -57,7 +57,6 @@ app.get("/api/professors", async (req, res) => {
 
 app.get("/api/professor", async (req, res) => {
   const professorName = req.query.name; // Use req.query instead of req.body
-  console.log(professorName);
   const query = "SELECT * FROM professors WHERE name = ?";
 
   try {
@@ -81,7 +80,6 @@ app.get("/api/professor", async (req, res) => {
 
 app.get("/api/reviews", async (req, res) => {
   const professorId = req.query.professorId; // Use req.query instead of req.body
-  console.log(professorId);
   const query = "SELECT * FROM reviews WHERE professor_id = ?";
 
   try {
