@@ -1,0 +1,34 @@
+.rating {
+    position: relative;
+    display: flex;
+    direction: row-reverse;
+    font-size: 30px;
+  }
+  
+  .rating input {
+    position: absolute;
+    appearance: none;
+  }
+  
+  .rating input:not(:checked) ~ label {
+    color: #666;
+  }
+  
+  .rating input:not(:checked) ~ label:before {
+    content: '★';
+  }
+  
+  .rating input:checked ~ label {
+    color: #ffa723;
+  }
+  
+  .rating input:not(:checked) ~ label:hover,
+  .rating input:not(:checked) ~ label:hover ~ label {
+    color: #ff9e0b;
+  }
+  
+  .rating input:checked ~ label:hover,
+  .rating input:checked ~ label:hover ~ label {
+    color: #e58e09;
+  }
+  

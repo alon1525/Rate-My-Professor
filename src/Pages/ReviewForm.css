@@ -1,99 +1,113 @@
 .form {
-    --input-focus: #2d8cf0;
-    --font-color: #323232;
-    --font-color-sub: #666;
-    --bg-color: beige;
-    --main-color: black;
-    padding: 20px;
-    background: #fdcb6e;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 20px;
-    border-radius: 5px;
-    border: 2px solid var(--main-color);
-    box-shadow: 4px 4px var(--main-color);
-  }
-  
-  .title {
-    color: var(--font-color);
-    font-weight: 900;
-    font-size: 20px;
-    margin-bottom: 25px;
-  }
-  
-  .title span {
-    color: var(--font-color-sub);
-    font-weight: 600;
-    font-size: 17px;
-  }
-  
-  .input {
-    width: 250px;
-    height: 40px;
-    border-radius: 5px;
-    border: 2px solid var(--main-color);
-    background-color: var(--bg-color);
-    box-shadow: 4px 4px var(--main-color);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--font-color);
-    padding: 5px 10px;
-    outline: none;
-  }
-  
-  .input::placeholder {
-    color: var(--font-color-sub);
-    opacity: 0.8;
-  }
-  
-  .input:focus {
-    border: 2px solid var(--input-focus);
-  }
-  
-  .login-with {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .button-log {
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    border: 2px solid var(--main-color);
-    background-color: var(--bg-color);
-    box-shadow: 4px 4px var(--main-color);
-    color: var(--font-color);
-    font-size: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .icon {
-    width: 24px;
-    height: 24px;
-    fill: var(--main-color);
-  }
-  
-  .button-log:active, .button-confirm:active {
-    box-shadow: 0px 0px var(--main-color);
-    transform: translate(3px, 3px);
-  }
-  
-  .button-confirm {
-    margin: 50px auto 0 auto;
-    width: 120px;
-    height: 40px;
-    border-radius: 5px;
-    border: 2px solid var(--main-color);
-    background-color: var(--bg-color);
-    box-shadow: 4px 4px var(--main-color);
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--font-color);
-    cursor: pointer;
-  }
-  
+  --input-focus: #2d8cf0;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: beige;
+  --main-color: black;
+  padding: 20px;
+  background: #fdcb6e;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  width: 350px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  margin-top: 100px; /* Adjust this value to move the form down */
+}
+
+
+.title {
+  color: var(--font-color);
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.rating-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Add space between different rating rows */
+  width:100%;
+}
+
+.rating-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--font-color);
+  flex-basis: 30%; /* Adjust width of the title */
+}
+
+
+
+.rating-inputs select {
+  font-size: 14px;
+  padding: 10px;
+  width: 60px;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+}
+
+.review-textarea {
+  font-size: 14px; /* Adjust the font size */
+  padding: 10px; /* Add padding for better spacing */
+  border: 1px solid var(--main-color); /* Add border if needed */
+  border-radius: 5px; /* Rounded corners for better appearance */
+  width: 100%; /* Ensure it takes full width of its container */
+  height: 140px; /* Set the height to make it expand more vertically */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  resize: vertical; /* Allow vertical resizing only */
+  text-align: left; /* Align text to the left */
+  vertical-align: top; /* Align text to the top */
+  overflow: auto; /* Add scrollbar if needed */
+}
+
+
+.title span {
+  color: var(--font-color-sub);
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.login-with {
+  display: flex;
+  gap: 20px;
+}
+
+.button-confirm {
+  margin: 50px auto 0 auto;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--font-color);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for color changes */
+}
+
+.button-confirm:hover {
+  background-color: var(--main-color); /* Change background color on hover */
+  color: var(--bg-color); /* Change text color on hover */
+}
+
+.button-confirm:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(3px, 3px);
+}
+
+.dropdown{
+  max-width: 60px;
+}
+
+.rating-row {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr; /* Define two columns with flexible widths */
+  gap: 100px; /* Add space between columns */
+  padding-bottom: 15px;
+}

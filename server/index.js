@@ -96,6 +96,20 @@ app.get("/api/reviews", async (req, res) => {
   }
 });
 
+app.post('/api/submit-review', (req, res) => {
+  const { clarity, fairness, interesting, organize, body, name } = req.body;
+
+  // SQL query to insert data into the reviews table
+  const sql = 'INSERT INTO reviews (clarity, fairness, interesting, organize, body) VALUES (?, ?, ?, ?, ?)';
+
+  db.query(sql, [clarity, fairness, interesting, organize, body], (err, result) => {
+    if (err) {
+      console.error('Error inserting data into the database:', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    res.status(200).json({ message: 'Review submitted successfully!' });
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

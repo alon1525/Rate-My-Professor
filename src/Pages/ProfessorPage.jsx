@@ -70,7 +70,7 @@ export default function ProfessorPage() {
       <div className="modal">
         <div onClick={toggleModal} className="overlay"></div>
         <div className="modal-content">
-          <ReviewForm></ReviewForm>
+          <ReviewForm name={professor.name}></ReviewForm>
         </div>
       </div>
     )}
