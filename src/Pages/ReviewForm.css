@@ -8,62 +8,65 @@
   background: #fdcb6e;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 20px;
   width: 350px;
   border-radius: 5px;
   border: 2px solid var(--main-color);
   box-shadow: 4px 4px var(--main-color);
-  margin-top: 100px; /* Adjust this value to move the form down */
+  margin-top: 100px;
 }
-
 
 .title {
   color: var(--font-color);
   font-weight: 900;
   font-size: 20px;
+  text-align: center;
   margin-bottom: 10px;
 }
 
 .rating-group {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Add space between different rating rows */
-  width:100%;
+  gap: 15px;
+  width: 100%;
+}
+
+.rating-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .rating-title {
   font-size: 16px;
   font-weight: 600;
   color: var(--font-color);
-  flex-basis: 30%; /* Adjust width of the title */
+  flex: 1;
 }
 
-
-
-.rating-inputs select {
+.rating-select {
   font-size: 14px;
   padding: 10px;
-  width: 60px;
+  width: 80px;
   border: 1px solid var(--main-color);
   border-radius: 5px;
 }
 
 .review-textarea {
-  font-size: 14px; /* Adjust the font size */
-  padding: 10px; /* Add padding for better spacing */
-  border: 1px solid var(--main-color); /* Add border if needed */
-  border-radius: 5px; /* Rounded corners for better appearance */
-  width: 100%; /* Ensure it takes full width of its container */
-  height: 140px; /* Set the height to make it expand more vertically */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  resize: vertical; /* Allow vertical resizing only */
-  text-align: left; /* Align text to the left */
-  vertical-align: top; /* Align text to the top */
-  overflow: auto; /* Add scrollbar if needed */
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+  width: 100%;
+  height: 140px;
+  box-sizing: border-box;
+  resize: vertical;
+  text-align: left;
+  vertical-align: top;
+  overflow: auto;
 }
-
 
 .title span {
   color: var(--font-color-sub);
@@ -71,13 +74,7 @@
   font-size: 17px;
 }
 
-.login-with {
-  display: flex;
-  gap: 20px;
-}
-
 .button-confirm {
-  margin: 50px auto 0 auto;
   width: 120px;
   height: 40px;
   border-radius: 5px;
@@ -88,12 +85,12 @@
   font-weight: 600;
   color: var(--font-color);
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for color changes */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .button-confirm:hover {
-  background-color: var(--main-color); /* Change background color on hover */
-  color: var(--bg-color); /* Change text color on hover */
+  background-color: var(--main-color);
+  color: var(--bg-color);
 }
 
 .button-confirm:active {
@@ -101,13 +98,39 @@
   transform: translate(3px, 3px);
 }
 
-.dropdown{
-  max-width: 60px;
+.header-input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }
 
-.rating-row {
-  display: grid;
-  grid-template-columns: 1fr 0.5fr; /* Define two columns with flexible widths */
-  gap: 100px; /* Add space between columns */
-  padding-bottom: 15px;
+.header-input {
+  font-size: 14px; /* Match the font size with the textarea */
+  padding: 10px;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit; /* Inherit font family from parent or explicitly set if needed */
+  font-weight: 400; /* Match the font weight with the textarea */
+  line-height: 1.5; /* Match the line height with the textarea */
 }
+
+.review-textarea {
+  font-size: 14px; /* Ensure consistent font size */
+  padding: 10px; /* Add padding for better spacing */
+  border: 1px solid var(--main-color); /* Add border if needed */
+  border-radius: 5px; /* Rounded corners for better appearance */
+  width: 100%; /* Ensure it takes full width of its container */
+  height: 140px; /* Set the height to make it expand more vertically */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  resize: vertical; /* Allow vertical resizing only */
+  text-align: left; /* Align text to the left */
+  vertical-align: top; /* Align text to the top */
+  overflow: auto; /* Add scrollbar if needed */
+  font-family: inherit; /* Ensure font-family consistency */
+  font-weight: 400; /* Match the font weight */
+  line-height: 1.5; /* Ensure consistent line height */
+}
+

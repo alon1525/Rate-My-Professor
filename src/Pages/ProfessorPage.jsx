@@ -1,5 +1,5 @@
 // ProfessorPage.jsx
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 import { useLoaderData } from "react-router-dom";
 import './ProfessorPage.css'; // Import the CSS file
 import OverallScore from "../Components/OverallScore/OverallScore.jsx";
@@ -15,6 +15,11 @@ export default function ProfessorPage() {
   function toggleModal() {
     setModal(prev => !prev);
   }
+
+  useEffect(() => {
+    // Scroll to the top when the component is mounted
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array means this runs once on mount
 
   return (
     <div className="big-container">
@@ -57,8 +62,9 @@ export async function professorLoader({ params }) {
     );
 
     // Fetch reviews for the professor
+    console.log(professorResponse.data);
     const reviewsResponse = await axios.get(
-      `http://localhost:4000/api/reviews?professorId=${professorResponse.data.professor_id}`
+      `http://localhost:4000/api/reviews?name=${professorResponse.data.name}`
     );
 
     return {

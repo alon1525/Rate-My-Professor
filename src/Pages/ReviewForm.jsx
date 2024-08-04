@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import "./ReviewForm.css"; // Make sure to create and style this CSS file
 import axios from "axios";
 
-export default function ReviewForm({name}) {
-  const [formData,setFormData] = useState({clarity:0,
-    fairness:"0",
-    interesting:"0",
-    organize:"0",
-    body:"",});
+export default function ReviewForm({ name }) {
+  const [formData, setFormData] = useState({
+    rating: 1,
+    header: "",
+    body: "",
+    name: name,
+  });
+
 
   const handleKeyDown = (event) => {
-    if (event.key === "Enter" && event.target.tagName === "TEXTAREA") {
-      event.stopPropagation(); // Prevent Enter from propagating to form submit
+    if (event.key === "Enter" && event.target.tagName !== "TEXTAREA") {
+      event.preventDefault();
     }
   };
 
@@ -23,105 +25,77 @@ export default function ReviewForm({name}) {
     });
   };
 
-
-  async function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(formData);
     try {
-      const response = await axios.post();
-
-      if (!response.ok) {
+      const response = await axios.post(`http://localhost:4000/api/submit-review`, formData);
+      if (response.status !== 200) {
         throw new Error("Network response was not ok");
       }
 
-      const result = await response.json();
+      const result = await response.data;
       console.log(result); // Handle the result as needed
-
+      
+      // Use navigate after successful form submission
+      window.location.reload();
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
-  }
+  };
 
   return (
     <form className="form" onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
-      {console.log(formData)}
       <div className="title">
         Review for {name}
         <br />
-        <span>Fill the review</span>
+        <span>Fill out the review</span>
       </div>
 
-      {/* Replace email and password inputs with star ratings */}
       <div className="rating-group">
-        <div className="rating-selects">
-          <div className="rating-row">
-            <div className="rating-title">
-              Clarity
-              <div className="rating-inputs">
-                <select onChange={handleChange} className="dropdown" id="dropdownClarity" name="clarity">
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-            </div>
-            <div className="rating-title">
-              Fairness
-              <div className="rating-inputs">
-                <select onChange={handleChange} className="dropdown" id="dropdownFairness" name="fairness">
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          {/* Repeat for other ratings */}
-          <div className="rating-row">
-            <div className="rating-title">
-              Interesting
-              <div className="rating-inputs">
-                <select onChange={handleChange} className="dropdown" id="dropdownInteresting" name="interesting">
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-            </div>
-            <div className="rating-title">
-              Organize
-              <div className="rating-inputs">
-                <select onChange={handleChange} className="dropdown" id="dropdownOrganize" name="organize">
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-            </div>
-          </div>
+        <div className="rating-row">
+          <label className="rating-title">Rating</label>
+          <select
+            onChange={handleChange}
+            className="rating-select"
+            id="rating"
+            name="rating"
+            value={formData.rating}
+          >
+            {[1, 2, 3, 4, 5].map((val) => (
+              <option key={val} value={val}>
+                {val}
+              </option>
+            ))}
+          </select>
         </div>
+
+        <div className="header-input-row">
+          <input
+            type="text"
+            name="header"
+            placeholder="Review header"
+            className="header-input"
+            onChange={handleChange}
+            value={formData.header}
+            maxLength="40"
+          />
+        </div>
+
         <textarea
           name="body"
           placeholder="Write about the Professor"
           className="review-textarea"
           onKeyDown={handleKeyDown}
           onChange={handleChange}
+          value={formData.body}
+          maxLength="300"
         ></textarea>
       </div>
 
-      <div className="login-with"></div>
-      <button className="button-confirm">Submit →</button>
+      <button className="button-confirm" type="submit">
+        Submit →
+      </button>
     </form>
   );
 }

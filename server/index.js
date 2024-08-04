@@ -27,10 +27,13 @@ const db = mysql.createConnection({
 // Connect to MySQL
 db.connect((err) => {
   if (err) {
-    throw err;
+    console.error('Failed to connect to the database:', err);
+    // Don't exit the process, just log the error
+  } else {
+    console.log("Connected to MySQL database");
   }
-  console.log("Connected to MySQL database");
 });
+
 
 //fetch professors information
 app.get("/api/professors", async (req, res) => {
@@ -79,11 +82,11 @@ app.get("/api/professor", async (req, res) => {
 });
 
 app.get("/api/reviews", async (req, res) => {
-  const professorId = req.query.professorId; // Use req.query instead of req.body
-  const query = "SELECT * FROM reviews WHERE professor_id = ?";
+  const professorName = req.query.name; // Use req.query instead of req.body
+  const query = "SELECT * FROM reviews WHERE professor_name = ?";
 
   try {
-    db.query(query, [professorId], (err, results) => {
+    db.query(query, [professorName], (err, results) => {
       if (err) {
         console.error("Error executing query:", err);
         return res.status(500).send("Server error");
@@ -96,13 +99,20 @@ app.get("/api/reviews", async (req, res) => {
   }
 });
 
+// Function to remove empty lines from a string
+function removeEmptyLines(text) {
+  const lines = text.split('\n');
+  const nonEmptyLines = lines.filter(line => line.trim() !== '');
+  return nonEmptyLines.join('\n');
+}
+
 app.post('/api/submit-review', (req, res) => {
-  const { clarity, fairness, interesting, organize, body, name } = req.body;
-
+  let { rating,header, body, name } = req.body;
+  body = removeEmptyLines(body);
   // SQL query to insert data into the reviews table
-  const sql = 'INSERT INTO reviews (clarity, fairness, interesting, organize, body) VALUES (?, ?, ?, ?, ?)';
+  const sql = 'INSERT INTO reviews (user_email,header,comment,rating,professor_name) VALUES (?, ?, ?,?,?)';
 
-  db.query(sql, [clarity, fairness, interesting, organize, body], (err, result) => {
+  db.query(sql, ["user15@post.bgu.ac.il",header,body,rating,name], (err, result) => {
     if (err) {
       console.error('Error inserting data into the database:', err);
       return res.status(500).json({ error: 'Internal server error' });
