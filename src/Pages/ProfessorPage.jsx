@@ -1,51 +1,20 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+// ProfessorPage.jsx
+import React, { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import './ProfessorPage.css'; // Import the CSS file
 import OverallScore from "../Components/OverallScore/OverallScore.jsx";
 import ReviewList from "../Components/Review/ReviewList.jsx";
 import ReviewButton from "../Components/ReviewButton/ReviewButton.jsx";
 import ReviewForm from "./ReviewForm.jsx"; // Import ReviewForm
+import axios from "axios"
 
 export default function ProfessorPage() {
-  const { name } = useParams();
-  const [professor, setProfessor] = useState({});
-  const [reviews, setReviews] = useState([]);
+  const { professor, reviews } = useLoaderData();
   const [modal, setModal] = useState(false);
-
 
   function toggleModal() {
     setModal(prev => !prev);
   }
-  console.log(modal);
-    
-  // Extract the professor name from the path
-  const professorName = encodeURIComponent(name.split("/").pop());
-
-  useEffect(() => {
-    async function fetchData() {
-      window.scrollTo(0, 0);
-
-      try {
-        // Fetch professor details
-        const professorResponse = await axios.get(
-          `http://localhost:4000/api/professor?name=${professorName}`
-        );
-        setProfessor(professorResponse.data);
-
-        // Fetch reviews for the professor
-        const reviewsResponse = await axios.get(
-          `http://localhost:4000/api/reviews?professorId=${professorResponse.data.professor_id}`
-        );
-        setReviews(reviewsResponse.data);
-        
-      } catch (error) {
-        console.error("There was an error fetching the professor or reviews data!", error);
-      }
-    }
- 
-    fetchData();
-  }, [professorName]);
 
   return (
     <div className="big-container">
@@ -67,13 +36,38 @@ export default function ProfessorPage() {
       {reviews.length > 0 ? <ReviewList reviews={reviews} /> : <h1>No Reviews</h1>}
 
       {modal && (
-      <div className="modal">
-        <div onClick={toggleModal} className="overlay"></div>
-        <div className="modal-content">
-          <ReviewForm name={professor.name}></ReviewForm>
+        <div className="modal">
+          <div onClick={toggleModal} className="overlay"></div>
+          <div className="modal-content">
+            <ReviewForm name={professor.name} />
+          </div>
         </div>
-      </div>
-    )}
+      )}
     </div>
   );
+}
+
+export async function professorLoader({ params }) {
+  const professorName = encodeURIComponent(params.name.split("/").pop());
+
+  try {
+    // Fetch professor details
+    const professorResponse = await axios.get(
+      `http://localhost:4000/api/professor?name=${professorName}`
+    );
+
+    // Fetch reviews for the professor
+    const reviewsResponse = await axios.get(
+      `http://localhost:4000/api/reviews?professorId=${professorResponse.data.professor_id}`
+    );
+
+    return {
+      professor: professorResponse.data,
+      reviews: reviewsResponse.data
+    };
+
+  } catch (error) {
+    console.error("There was an error fetching the professor or reviews data!", error);
+    throw new Response("Failed to load data", { status: 500 });
+  }
 }

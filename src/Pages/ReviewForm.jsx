@@ -4,9 +4,9 @@ import axios from "axios";
 
 export default function ReviewForm({name}) {
   const [formData,setFormData] = useState({clarity:0,
-    fairness:0,
-    interesting:0,
-    organize:0,
+    fairness:"0",
+    interesting:"0",
+    organize:"0",
     body:"",});
 
   const handleKeyDown = (event) => {
@@ -43,6 +43,7 @@ export default function ReviewForm({name}) {
 
   return (
     <form className="form" onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
+      {console.log(formData)}
       <div className="title">
         Review for {name}
         <br />
@@ -56,7 +57,7 @@ export default function ReviewForm({name}) {
             <div className="rating-title">
               Clarity
               <div className="rating-inputs">
-                <select onChange={handleChange} className="dropdown" id="dropdownClarity" name="dropdownClarity">
+                <select onChange={handleChange} className="dropdown" id="dropdownClarity" name="clarity">
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -69,7 +70,7 @@ export default function ReviewForm({name}) {
             <div className="rating-title">
               Fairness
               <div className="rating-inputs">
-                <select onChange={handleChange} className="dropdown" id="dropdownFairness" name="dropdownFairness">
+                <select onChange={handleChange} className="dropdown" id="dropdownFairness" name="fairness">
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -85,7 +86,7 @@ export default function ReviewForm({name}) {
             <div className="rating-title">
               Interesting
               <div className="rating-inputs">
-                <select onChange={handleChange} className="dropdown" id="dropdownInteresting" name="dropdownInteresting">
+                <select onChange={handleChange} className="dropdown" id="dropdownInteresting" name="interesting">
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -98,7 +99,7 @@ export default function ReviewForm({name}) {
             <div className="rating-title">
               Organize
               <div className="rating-inputs">
-                <select onChange={handleChange} className="dropdown" id="dropdownOrganize" name="dropdownOrganize">
+                <select onChange={handleChange} className="dropdown" id="dropdownOrganize" name="organize">
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
