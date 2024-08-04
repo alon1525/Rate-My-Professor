@@ -1,57 +1,37 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
-import styled from "styled-components";
+import './StarRating.css'; // Import the CSS file
 
-export default function StarRating({ ratingName, rating, margin = "10px" }) {
-  // Update the StarRatingContainer to accept marginTop as a prop
-
+export default function StarRating({ ratingName, rating, margin = "10px",overlayColor }) {
   function renderStars(rating) {
     const stars = [];
     const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
+    const hasHalfStar = rating !== fullStars;
+    const lastStarPrecentage = `${100*(1-(rating-fullStars))}%`;
 
     for (let i = 0; i < 5; i++) {
       if (i < fullStars) {
-        stars.push(<FontAwesomeIcon icon={solidStar} key={i} />);
+        stars.push(<FontAwesomeIcon icon={solidStar} key={i} className="star" />);
       } else if (i === fullStars && hasHalfStar) {
-        stars.push(<HalfStar key={i} />);
-      } else {
-        stars.push(<FontAwesomeIcon icon={regularStar} key={i} />);
+        stars.push(<HalfStar key={i} widthPrecentage={lastStarPrecentage} />);      
       }
     }
 
     return stars;
   }
 
+  const HalfStar = ({widthPrecentage}) => (
+    <div className="half-star">
+      <FontAwesomeIcon icon={solidStar} className="star" />
+      <div className="half-star-overlay" style={{width:widthPrecentage, background:overlayColor}}></div>
+    </div>
+  );
+
   return (
-    <StarRatingContainer>
-      <RatingName>{ratingName}</RatingName>
-      <div>{renderStars(rating)}</div>
-    </StarRatingContainer>
+    <div className="star-rating-container" style={{ marginTop: margin}}>
+      {ratingName && <p className="rating-name">{ratingName + ":" + rating}</p>}
+      <div className="stars">{renderStars(rating)}</div>
+    </div>
   );
 }
-
-const RatingName = styled.p`
-  font-weight: bold;
-  margin-bottom: 4px;
-`;
-
-const HalfStar = styled(FontAwesomeIcon).attrs({
-  icon: solidStar,
-})`
-  position: relative;
-  &:before {
-    content: "\f005"; // Unicode for star icon
-    position: absolute;
-    left: 0;
-    width: 50%;
-    overflow: hidden;
-    display: block;
-    color: #333;
-  }
-`;
-const StarRatingContainer = styled.div`
-margin-top: 0px;
-`;

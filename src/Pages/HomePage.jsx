@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchBar from "../Components/SearchBar";
-import ProfessorList from "../Components/HomePage/ProfessorList";
+import CardList from "../Components/HomePage/CardList";
 import "../App.css";
 import picture1 from "../Assets/OnlineReview-amico.svg";
 import picture2 from "../Assets/Top secret-bro.svg";
@@ -41,7 +41,7 @@ export default function HomePage() {
       </div>
       <HorizontalLine></HorizontalLine>
       <h1 className="top-professor-text">Top Professors</h1>
-      <ProfessorList professors={professors} />
+      <CardList professors={professors} />
     </div>
 
     </>

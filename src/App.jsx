@@ -8,6 +8,7 @@ import Root from './Pages/Root.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
 import './App.css';
 import ReviewForm from './Pages/ReviewForm.jsx';
+import SearchPage from './Pages/SearchPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "login", element: <LoginPage /> },
       { path: "professor/:name", element: <ProfessorPage />, loader: professorLoader },
       { path: "reviewForm/:name", element: <ReviewForm /> },
+      { path: "searchPage/:search", element: <SearchPage />}
     ],
   },
 ]);

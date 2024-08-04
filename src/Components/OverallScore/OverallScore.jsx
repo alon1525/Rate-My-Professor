@@ -24,7 +24,7 @@ export default function OverallScore({ professor }) {
       <div className="header">
         <h2>{professor.total_avg}<span>/5</span></h2>
         <div className='evaluations'>
-          <StarRating />
+          <StarRating rating={professor.total_avg} overlayColor={"#2d3436"} />
           <h2>{evaluationCount} Evaluations</h2>
         </div>
       </div>

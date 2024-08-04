@@ -1,34 +1,34 @@
 .rating {
-    position: relative;
-    display: flex;
-    direction: row-reverse;
-    font-size: 30px;
-  }
-  
-  .rating input {
-    position: absolute;
-    appearance: none;
-  }
-  
-  .rating input:not(:checked) ~ label {
-    color: #666;
-  }
-  
-  .rating input:not(:checked) ~ label:before {
-    content: '★';
-  }
-  
-  .rating input:checked ~ label {
-    color: #ffa723;
-  }
-  
-  .rating input:not(:checked) ~ label:hover,
-  .rating input:not(:checked) ~ label:hover ~ label {
-    color: #ff9e0b;
-  }
-  
-  .rating input:checked ~ label:hover,
-  .rating input:checked ~ label:hover ~ label {
-    color: #e58e09;
-  }
-  
+  display: flex;
+  direction: row-reverse;
+  font-size: 30px; /* Adjust size as needed */
+}
+
+.star {
+  color: #666; /* Default color for stars */
+}
+
+.half-star {
+  position: relative;
+  display: inline-block;
+  width: 1em; /* Adjust to match star size */
+  height: 1em; /* Ensure this matches the star size for correct overlay */
+}
+
+.half-star .star {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+
+.half-star-overlay {
+  position: absolute;
+  top: 5%;
+  right: -15%; /* Aligns overlay to the right edge */
+  width: 50%; /* Cover half of the star */
+  height: 100%;
+  background: #F7E7DC; /* Background to cover the half-star */
+  z-index: 1;
+  clip-path: inset(0 0 0 0); /* Ensures no extra space around the overlay */
+}

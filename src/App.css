@@ -179,6 +179,25 @@ main {
   max-height: 100px;
 }
 
+.search-results-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the page takes up full height */
+  background-color: #FFF8F3;
+}
+
+.search-header {
+  background-color: #FFF8F3;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #333;
+}
 
 @media (max-width: 768px) {
   .search-bar {
