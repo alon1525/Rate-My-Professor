@@ -3,6 +3,7 @@ import "./ReviewForm.css"; // Make sure to create and style this CSS file
 import axios from "axios";
 
 export default function ReviewForm({ name }) {
+
   const [formData, setFormData] = useState({
     rating: 1,
     header: "",
@@ -38,7 +39,11 @@ export default function ReviewForm({ name }) {
       console.log(result); // Handle the result as needed
       
       // Use navigate after successful form submission
-      window.location.reload();
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
