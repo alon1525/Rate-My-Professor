@@ -184,6 +184,7 @@ main {
   flex-direction: column;
   min-height: 100vh; /* Ensure the page takes up full height */
   background-color: #FFF8F3;
+  margin-left: 100px;
 }
 
 .search-header {
@@ -211,6 +212,129 @@ main {
   }
 }
 
-a {
+.professor-result-link {
   text-decoration: none;
 }
+
+.professor-result-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 15px;
+  width: 300px; /* Slightly smaller width */
+  height: auto; /* Adjust height based on content */
+  display: flex;
+  align-items: center;
+  background-color: rgb(247, 247, 247);
+  color: #333;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.professor-result-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E0F7FA; /* Light cyan for better visibility */
+  padding: 8px 12px; /* Slightly smaller padding */
+  border-radius: 8px;
+  color: #333; /* Dark text color */
+  font-weight: bold;
+  margin-right: 15px; /* Reduced space between the score box and professor details */
+  min-width: 60px; /* Ensures a minimum width for the score box */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.score-box.high {
+  background-color: rgb(127, 246, 195);
+}
+
+.score-box.medium {
+  background-color: rgb(255, 241, 112); /* Bright yellow for medium scores */
+}
+
+.score-box.low {
+  background-color: rgb(255, 156, 156);
+}
+
+.score-box-label {
+  font-size: 0.9rem;
+  margin-bottom: 5px; /* Space between label and number */
+}
+
+.score-box-number {
+  font-size: 1.3rem; /* Adjusted font size for number */
+  font-weight: bold;
+}
+
+.score-box-reviews {
+  margin-top: 10px; /* Space between number and reviews text */
+  font-size: 0.7rem; /* Slightly smaller font size */
+  color: #666; /* Medium gray text color */
+}
+
+/* Adjustments for the professor details text */
+.professor-result-info {
+  flex: 1; /* Takes up remaining space */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.professor-result-name {
+  font-size: 1.25rem; /* Slightly smaller font size */
+  color: #333;
+  margin-bottom: 6px; /* Reduced space below name */
+}
+
+.professor-result-department {
+  font-size: 0.9rem; /* Slightly smaller font size */
+  color: #666;
+  margin-bottom: 10px; /* Reduced space below department */
+}
+
+/* Styling for the department filter */
+.department-filter {
+  margin: 20px 0; /* Space around the filter */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the span and select */
+}
+
+.department-filter span {
+  font-size: 1.1rem; /* Slightly larger font size for better readability */
+  font-weight: bold; /* Make the label stand out */
+  color: #333; /* Dark text color */
+}
+
+.department-select {
+  padding: 10px 15px; /* Comfortable padding */
+  border-radius: 8px; /* Rounded corners */
+  border: 1px solid #ddd; /* Light border */
+  background-color: #fff; /* White background for the select */
+  font-size: 1rem; /* Consistent font size */
+  color: #333; /* Dark text color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  cursor: pointer; /* Pointer cursor for better UX */
+  transition: background-color 0.2s, border-color 0.2s; /* Smooth transitions */
+}
+
+.department-select:focus {
+  outline: none; /* Remove default outline */
+  border-color: #0056b3; /* Change border color on focus */
+  background-color: #f0f8ff; /* Light blue background on focus */
+}
+
+.professor-list {
+  display: grid; /* Use CSS Grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusts columns based on available space */
+  gap: 20px; /* Space between items */
+  padding-top: 20px; /* Padding around the grid container */
+  padding-bottom:20px;
+  justify-content: center; /* Center align the grid items */
+}
+

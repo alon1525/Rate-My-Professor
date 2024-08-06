@@ -39,7 +39,17 @@ INSERT INTO professors (name, department) VALUES
 ('Dr. Jane Smith', 'Mathematics'),
 ('Dr. Emily Johnson', 'Physics'),
 ('Dr. Michael Brown', 'Chemistry'),
-('Dr. Linda Davis', 'Biology');
+('Dr. Linda Davis', 'Biology'),
+('Dr. Sarah White', 'Engineering'),
+('Dr. David Lee', 'Economics'),
+('Dr. Laura Green', 'History'),
+('Dr. Thomas Adams', 'Biochemistry'),
+('Dr. Alice Miller', 'Psychology'),
+('Dr. Daniel Wilson', 'Linguistics'),
+('Dr. Rachel Clark', 'Philosophy'),
+('Dr. James Harris', 'Political Science'),
+('Dr. Megan Lewis', 'Sociology'),
+('Dr. Brian King', 'Statistics');
 
 -- Define triggers to update average ratings
 DELIMITER //
@@ -116,7 +126,13 @@ INSERT INTO users (email) VALUES
 ('user12@post.bgu.ac.il'),
 ('user13@post.bgu.ac.il'),
 ('user14@post.bgu.ac.il'),
-('user15@post.bgu.ac.il');
+('user15@post.bgu.ac.il'),
+('user16@post.bgu.ac.il'),
+('user17@post.bgu.ac.il'),
+('user18@post.bgu.ac.il'),
+('user19@post.bgu.ac.il'),
+('user20@post.bgu.ac.il');
+
 
 -- Insert sample data into reviews
 INSERT INTO reviews (user_email, professor_name, rating, header, comment) VALUES
@@ -134,4 +150,24 @@ INSERT INTO reviews (user_email, professor_name, rating, header, comment) VALUES
 ('user12@post.bgu.ac.il', 'Dr. Michael Brown', 5, 'Struggled with Clarity', 'Struggled with the clarity and difficulty.'),
 ('user13@post.bgu.ac.il', 'Dr. Linda Davis', 4, 'Well-Organized and Clear', 'Well-organized and clear, but the course was a bit difficult.'),
 ('user14@post.bgu.ac.il', 'Dr. Linda Davis', 5, 'Fantastic Professor', 'Fantastic professor! All aspects were great.'),
-('user15@post.bgu.ac.il', 'Dr. Linda Davis', 4, 'Good Overall', 'Good professor overall, but some parts were hard to follow.');
+('user15@post.bgu.ac.il', 'Dr. Linda Davis', 4, 'Good Overall', 'Good professor overall, but some parts were hard to follow.'),
+('user1@post.bgu.ac.il', 'Dr. Sarah White', 2, 'Needs Improvement', 'Not very engaging and the course materials were lacking.'),
+('user2@post.bgu.ac.il', 'Dr. Sarah White', 1, 'Very Disappointing', 'Unorganized and the lectures were confusing.'),
+('user3@post.bgu.ac.il', 'Dr. David Lee', 2, 'Below Average', 'The content was dry and the professor was not very interactive.'),
+('user4@post.bgu.ac.il', 'Dr. David Lee', 3, 'Average', 'Average performance; could use better explanations.'),
+('user5@post.bgu.ac.il', 'Dr. Laura Green', 4, 'Good but Could Improve', 'Good lectures but occasionally disorganized.'),
+('user6@post.bgu.ac.il', 'Dr. Laura Green', 2, 'Not Very Engaging', 'The content was there but the delivery was poor.'),
+('user7@post.bgu.ac.il', 'Dr. Thomas Adams', 3, 'Fairly Good', 'Fairly good but struggled with clarity in some areas.'),
+('user8@post.bgu.ac.il', 'Dr. Thomas Adams', 2, 'Needs Work', 'The explanations were often unclear and confusing.'),
+('user9@post.bgu.ac.il', 'Dr. Alice Miller', 4, 'Decent Course', 'Decent course but could be more engaging.'),
+('user10@post.bgu.ac.il', 'Dr. Alice Miller', 1, 'Very Poor', 'The course was very disorganized and hard to follow.'),
+('user11@post.bgu.ac.il', 'Dr. Daniel Wilson', 3, 'Okay', 'Okay overall but not very memorable.'),
+('user12@post.bgu.ac.il', 'Dr. Daniel Wilson', 2, 'Needs Improvement', 'Needs significant improvement in both teaching style and content.'),
+('user13@post.bgu.ac.il', 'Dr. Rachel Clark', 4, 'Good Professor', 'Good professor but could use better materials.'),
+('user14@post.bgu.ac.il', 'Dr. Rachel Clark', 1, 'Terrible Experience', 'Terrible experience; the lectures were unstructured and confusing.'),
+('user15@post.bgu.ac.il', 'Dr. James Harris', 5, 'Excellent', 'An excellent professor with great lectures and clear explanations.'),
+('user16@post.bgu.ac.il', 'Dr. James Harris', 2, 'Below Expectations', 'The professor did not meet expectations; content was often unengaging.'),
+('user17@post.bgu.ac.il', 'Dr. Megan Lewis', 3, 'Satisfactory', 'Satisfactory course but not exceptional.'),
+('user18@post.bgu.ac.il', 'Dr. Megan Lewis', 2, 'Needs Improvement', 'The course needs improvement in both content and presentation.'),
+('user19@post.bgu.ac.il', 'Dr. Brian King', 4, 'Good Course', 'Good course with clear explanations, though could use more examples.'),
+('user20@post.bgu.ac.il', 'Dr. Brian King', 1, 'Very Poor', 'Very poor course, lacked depth and clarity.');

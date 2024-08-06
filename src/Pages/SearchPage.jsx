@@ -8,8 +8,7 @@ export default function SearchResultsPage() {
   const [professors, setProfessors] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState("All");
 
-  const {search} = useParams();
-  console.log(selectedDepartment);
+  const { search } = useParams();
 
   useEffect(() => {
     async function fetchProfessors(query) {
@@ -17,7 +16,6 @@ export default function SearchResultsPage() {
         try {
           const response = await axios.get(`http://localhost:4000/api/professors?search=${search}`);
           setProfessors(response.data);
-          console.log(response.data);
         } catch (error) {
           console.error("There was an error fetching the professors!", error);
         }
@@ -31,27 +29,31 @@ export default function SearchResultsPage() {
     new Set(professors.map(professor => professor.department).filter(department => department))
   );
 
+  const filteredProfessors = selectedDepartment === "All"
+    ? professors
+    : professors.filter(professor => professor.department === selectedDepartment);
+
   return (
     <div className="search-results-page">
-      <h2>{`${professors.length} Professors with "${search}" in their name`}</h2>
+      <h2>{`${filteredProfessors.length} Professors were found`}</h2>
       <div className="department-filter">
         <span>Department:</span>
         <select
-            onChange={(e)=>{setSelectedDepartment(e.target.value)}}
-            className="department-select"
-            id="department"
-            name="department"
-            value={selectedDepartment}
-          >
-            <option value= "All">All</option>
-            {uniqueDepartments.map((department) => (
-              <option key={department} value={department}>
-                {department}
-              </option>
-            ))}
-          </select>
-          <ProfessorList professors={professors}/>
+          onChange={(e) => setSelectedDepartment(e.target.value)}
+          className="department-select"
+          id="department"
+          name="department"
+          value={selectedDepartment}
+        >
+          <option value="All">All</option>
+          {uniqueDepartments.map((department) => (
+            <option key={department} value={department}>
+              {department}
+            </option>
+          ))}
+        </select>
       </div>
+      <ProfessorList professors={filteredProfessors} />
     </div>
   );
 }
