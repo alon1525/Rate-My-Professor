@@ -1,24 +1,80 @@
-
-body {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html, body {
   margin: 0;
-  padding-top: 3rem; /* Adjust based on the height of your navbar */
-  font-family: 'Lexend', sans-serif;
-  background-color: #FFF8F3;
+  padding: 0;
   height: 100%;
+  background-color: #FFFFFF; /* Background color matching the top of the gradient */
+  font-family: "Poppins", sans-serif;
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
 }
+
+html::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in Webkit browsers */
+}
+
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+
+}
+
+
+
+header{
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo{
+  position: relative;
+  font-size: 32px;
+  color: black;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+nav .Link{
+  position: relative;
+  font-size: 18px;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 40px;
+}
+  
+.nav .Link::before{
+  content: '';
+  position: absolute;
+  top:100%;
+  left:0;
+  width: 0%;
+  height: 2px;
+  background: black;
+  transition: 0.3s;
+}
+
+.nav .Link:hover::before{
+  width: 100%;
+}
+
 html{
   height: 100%;
 }
-h1, h2, p {
-  margin: 0;
-  padding: 0;
-}
+
 main {
   flex: 1; /* Allows main content to take up remaining space */
 }
 .container {
   margin: 0 auto;
-  background-color: #FFF8F3;
+  background-color: #ffffff;
   border-radius: 8px;
   /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  Soft shadow for depth */
   flex: 1; /* Make the container take remaining space */
@@ -30,63 +86,28 @@ main {
 .root-container {
   display: flex;
   margin-bottom: 40px;
-
 }
 
-.search-bar-container {
-  position: relative; /* Keeps the h2 and search bar correctly positioned */
-  background-image: url("Assets/SearchBarImage.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 400px;
+.top-section h1{
+  color: black;
 }
 
-.search-bar-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: inherit; /* Inherits the background image from the parent */
-  filter: blur(5px); /* Adjust the blur level */
-  z-index: -1; /* Places the pseudo-element behind other content */
-}
+.top-section p {
+  max-width: 800px; /* Adjust the number of characters per line */
+  margin: 0 auto; /* Center the paragraph */
+  line-height: 1.6; /* Adjust line height for better readability */
+  color: black;
 
-.search-bar-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
-  z-index: 0; /* Overlay sits on top of the blurred image */
-}
-
-.search-bar-container h2 {
-  position: relative; /* Ensure it respects the z-index stacking context */
-  z-index: 2; /* Higher z-index to place it above the blurred image and dark overlay */
-  color: #fff; /* Change the text color to make it stand out against the background */
-  font-size: 2rem; /* Adjust size as needed */
-  margin-top: 150px; /* Space from the top of the container */
-  text-align: center; /* Center align text */
 }
 
 .search-bar {
   display: flex; /* Use flexbox to align items in a row */
   align-items: center; /* Center items vertically */
-  position: absolute; /* Position relative to the container */
-  top: 50%; /* Centers vertically */
-  left: 50%; /* Centers horizontally */
+  position: relative; /* Position relative to the container */
   height: 10%;
   width: 40%;
-  padding: 10px;
-  margin-top:70px;
   border-radius: 40px;
   background-color: #f6f6f6;
-  transform: translate(-50%, -50%); /* Centers the search bar precisely */
   z-index: 1; /* Lower z-index to ensure it's below the h2 element */
 }
 
@@ -116,6 +137,7 @@ main {
   justify-content: center;
   margin-top: 10px;
   flex: 1; /* Make the professor list take remaining space */
+  padding-bottom: 100px;
 }
 
 .professor-card {
@@ -167,7 +189,8 @@ main {
   align-items: center; /* Centers items vertically */
   gap: 70px; /* Adjust the space between items */
   padding-bottom: 100px;
-  padding-top:100px
+  padding-top:100px;
+
 }
 
 .top-professor-text{
@@ -180,9 +203,9 @@ main {
 }
 
 .search-results-page {
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the page takes up full height */
   background-color: #FFF8F3;
   margin-left: 100px;
 }
@@ -338,3 +361,96 @@ main {
   justify-content: center; /* Center align the grid items */
 }
 
+.waveyTop {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  z-index: 2;
+}
+
+.waveyTop svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 150px;
+}
+
+.waveyTop .shape-fill {
+  fill: #FFFFFF;
+}
+
+.rightChildren{
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: 90px;
+  max-width: 50%; /* Ensures each item does not exceed 50% of the container width */
+  box-sizing: border-box;
+
+}
+
+.leftChildren{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-self: left;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+  max-width: 50%; /* Ensures each item does not exceed 50% of the container width */
+}
+
+.headHeader {
+  margin-bottom: 30px;
+  font-size: 55px;
+  justify-content: right;
+  right: 0;
+
+}
+
+/* Media query for screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .headHeader {
+    font-size: 45px; /* Adjust as needed */
+  }
+}
+
+/* Media query for screens smaller than 992px */
+@media (max-width: 992px) {
+  .headHeader {
+    font-size: 35px; /* Adjust as needed */
+  }
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+  .headHeader {
+    font-size: 25px; /* Adjust as needed */
+  }
+}
+
+/* Media query for screens smaller than 576px */
+@media (max-width: 576px) {
+  .headHeader {
+    font-size: 20px; /* Adjust as needed */
+  }
+}
+
+
+.paddingButton{
+  padding-top: 40px;
+}
+
+.bottom-part{
+  /* background-image: url("./Assets/gardient-background.svg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: "center"; */
+
+}
+
+.bottom-part h1{
+  padding-top: 100px;
+}

@@ -8,6 +8,7 @@ export default function CardList({ professors }) {
       {professors.map((prof, index) => (
         <ProfessorCard key={index} professor={prof} />
       ))}
+      
     </div>
   );
 }

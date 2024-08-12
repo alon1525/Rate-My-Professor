@@ -16,9 +16,6 @@ export default function SearchBar({ onSearch }) {
   }
 
   return (
-    <div className="search-bar-container">
-      <div className="search-bar-wrap">
-        <h2>Enter your professor</h2>
         <form className="search-bar" onSubmit={handleSubmit}>
           <span className="material-symbols-outlined">person</span>
           <input
@@ -30,7 +27,5 @@ export default function SearchBar({ onSearch }) {
             }}
           />
         </form>
-      </div>
-    </div>
   );
 }

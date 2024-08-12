@@ -24,7 +24,7 @@
 
 .half-star-overlay {
   position: absolute;
-  top: 5%;
+  top: 30%;
   right: -15%; /* Aligns overlay to the right edge */
   width: 50%; /* Cover half of the star */
   height: 100%;

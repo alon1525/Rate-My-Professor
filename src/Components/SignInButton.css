@@ -11,6 +11,7 @@
     position: relative; /* Ensure alignment control */
     overflow: hidden;
     font-weight: bold;
+    z-index: 4;
   }
   
   .boton-elegante::after {
