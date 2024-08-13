@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import img from "../Assets/professor-image.jpg";
 import "../App.css";
 import SignInButton from "./SignInButton";
 import SearchBar from "./SearchBar";
 
 const Section = ({ height = "200px" }) => {
+  const [query, setQuery] = useState(""); // Lifted state
+
   // Inline style for the section
   const sectionStyle = {
     height: height,
@@ -77,8 +79,14 @@ const Section = ({ height = "200px" }) => {
             ))}
           </ul>
           <div className="paddingButton">
-            <SignInButton isSquare={true} text="חיפוש" where="" paddingRight={"20px"} buttonPadding="18px 30px" />
-            <SearchBar></SearchBar>
+            <SignInButton 
+              isSquare={true} 
+              text="חיפוש" 
+              where={query} // Pass query to SignInButton
+              paddingRight={"20px"} 
+              buttonPadding="18px 30px" 
+            />
+            <SearchBar onChange={setQuery} />{console.log(query)}
           </div>
         </div>
       </div>

@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
 
-export default function SearchBar({ onSearch }) {
+export default function SearchBar({ onChange }) {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   function handleSearch(newValue) {
     setQuery(newValue);
+    onChange(newValue); // Update parent state
   }
 
   async function handleSubmit(e) {
