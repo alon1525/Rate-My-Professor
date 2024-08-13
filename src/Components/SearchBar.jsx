@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SearchBar({ onSearch }) {
   const [query, setQuery] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleSearch(newValue) {
     setQuery(newValue);
@@ -16,16 +16,15 @@ export default function SearchBar({ onSearch }) {
   }
 
   return (
-        <form className="search-bar" onSubmit={handleSubmit}>
-          <span className="material-symbols-outlined">person</span>
-          <input
-            type="search"
-            placeholder="Search for a professor..."
-            value={query}
-            onChange={(e) => {
-              handleSearch(e.target.value);
-            }}
-          />
-        </form>
+    <form className="search-bar" onSubmit={handleSubmit}>
+      <input
+        type="search"
+        placeholder="חפש את המרצה..."
+        value={query}
+        onChange={(e) => handleSearch(e.target.value)}
+        dir="rtl" // Set text direction to right-to-left
+      />
+      <span className="material-symbols-outlined">person</span>
+    </form>
   );
 }

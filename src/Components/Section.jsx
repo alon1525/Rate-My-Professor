@@ -2,6 +2,7 @@ import React from "react";
 import img from "../Assets/professor-image.jpg";
 import "../App.css";
 import SignInButton from "./SignInButton";
+import SearchBar from "./SearchBar";
 
 const Section = ({ height = "200px" }) => {
   // Inline style for the section
@@ -33,14 +34,15 @@ const Section = ({ height = "200px" }) => {
     flex: 1,
     height: "100%",
     backgroundRepeat: "no-repeat", // Prevent repeating the image
-    marginTop: "20px",
-    marginLeft: "6px",
+    position: "relative",
   };
 
   // Inline style for content
   const contentStyle = {
     color: "#405D72",
-    paddingRight: "70px",
+    gap: "20px",
+    left: "0%",
+    bottom: "25%",
     boxSizing: "border-box",
     textAlign: "right",
     position: "absolute",
@@ -52,26 +54,31 @@ const Section = ({ height = "200px" }) => {
     zIndex: 2,
   };
 
+  // List items data
+  const listItems = [
+    "חפש את המרצה שלך",
+    "דרג את המרצים",
+  ];
+
   return (
     <div style={sectionStyle}>
-      <div style={colorBackgroundStyle}>
-        <div style={imageBackgroundStyle}></div>
-      </div>
+      <div style={imageBackgroundStyle}></div>
       <div style={colorBackgroundStyle}>
         <div style={contentStyle}>
           <h1 className="headHeader">
             מצא ודרג את המרצים שלך באוניברסיטת בן-גוריון
           </h1>
-          <p className="bguText">
-            גלה פרופילים מפורטים של המרצים שלך באוניברסיטת בן-גוריון ושתף את
-            התובנות שלך! הפלטפורמה שלנו מאפשרת לך לחפש את המרצים שלך, לקרוא
-            ביקורות מתלמידים אחרים ולתרום את הדירוגים שלך. אם אתה מחפש משוב על
-            איכות ההוראה, מועילות או חוויות כלליות, תוכל למצוא את הכל כאן. דרג
-            את המרצים שלך ועזור לאחרים לקבל החלטות מושכלות לגבי השכלתם
-            באוניברסיטת בן-גוריון
-          </p>
+          <ul className="listContainer">
+            {listItems.map((item, index) => (
+              <li key={index} className="listItem">
+                <span className="listText">{item}</span>
+                <span className="circleWithCheckmark"></span>
+              </li>
+            ))}
+          </ul>
           <div className="paddingButton">
-            <SignInButton text="Get Started" where="" />
+            <SignInButton isSquare={true} text="חיפוש" where="" paddingRight={"20px"} buttonPadding="18px 30px" />
+            <SearchBar></SearchBar>
           </div>
         </div>
       </div>

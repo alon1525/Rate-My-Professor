@@ -31,7 +31,7 @@ export default function HomePage() {
 
   return (
     <div className="container">
-      <Section height="850px"></Section>
+      <Section height="100vh"></Section>
       <div className="picCards">
         <PicCard picture={picture1} title={"Manage and edit your ratings"} />
         <PicCard

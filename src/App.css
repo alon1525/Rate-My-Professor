@@ -105,10 +105,9 @@ main {
   align-items: center; /* Center items vertically */
   position: relative; /* Position relative to the container */
   height: 10%;
-  width: 40%;
-  border-radius: 40px;
+  width: 90%;
   background-color: #f6f6f6;
-  z-index: 1; /* Lower z-index to ensure it's below the h2 element */
+  z-index: 4; /* Lower z-index to ensure it's below the h2 element */
 }
 
 .search-bar span {
@@ -383,31 +382,11 @@ main {
   fill: #FFFFFF;
 }
 
-.rightChildren{
-  flex: 1;
-  flex-direction: column;
-  padding-bottom: 90px;
-  max-width: 50%; /* Ensures each item does not exceed 50% of the container width */
-  box-sizing: border-box;
-
-}
-
-.leftChildren{
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-self: left;
-  padding-bottom: 100px;
-  box-sizing: border-box;
-  max-width: 50%; /* Ensures each item does not exceed 50% of the container width */
-}
-
 .headHeader {
-  margin-bottom: 30px;
   font-size: 55px;
   justify-content: right;
   right: 0;
-
+  padding-bottom: 10px;
 }
 
 /* Media query for screens smaller than 1200px */
@@ -440,7 +419,10 @@ main {
 
 
 .paddingButton{
-  padding-top: 40px;
+  padding-top: 70px;
+  display: flex;
+  justify-content: right;
+  width: 85%;
 }
 
 .bottom-part{
@@ -453,4 +435,49 @@ main {
 
 .bottom-part h1{
   padding-top: 100px;
+}
+
+/* Style for the list container */
+.listContainer {
+  list-style-type: none;
+  padding-top: 60px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 35px; /* Space between items */
+}
+
+/* Style for each list item */
+.listItem {
+  display: flex;
+  align-items: center;
+  color: #405D72; /* Text color matching the content style */
+  justify-content: right;
+}
+
+/* Style for the circle with a checkmark */
+.circleWithCheckmark {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px; /* Space between circle and text */
+  position: relative;
+}
+
+/* Checkmark inside the circle */
+.circleWithCheckmark::after {
+  content: '✔'; /* Checkmark symbol */
+  color: #405D72; /* Checkmark color */
+  font-size: 10px;
+  position: absolute;
+  top: 3px; /* Adjust position to center the checkmark */
+  left: 5px; /* Adjust position to center the checkmark */
+}
+
+/* Style for the text next to the circle */
+.listText {
+  font-size: 16px; /* Adjust font size if needed */
+  padding-right: 10px;
 }
