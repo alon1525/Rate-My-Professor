@@ -37,6 +37,7 @@ const Section = ({ height = "200px" }) => {
     height: "100%",
     backgroundRepeat: "no-repeat", // Prevent repeating the image
     position: "relative",
+    // Add animation class here
   };
 
   // Inline style for content
@@ -64,7 +65,7 @@ const Section = ({ height = "200px" }) => {
 
   return (
     <div style={sectionStyle}>
-      <div style={imageBackgroundStyle}></div>
+      <div className="image-background-animate" style={imageBackgroundStyle}></div>
       <div style={colorBackgroundStyle}>
         <div style={contentStyle}>
           <h1 className="headHeader">

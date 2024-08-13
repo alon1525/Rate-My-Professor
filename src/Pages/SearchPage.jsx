@@ -6,7 +6,7 @@ import ProfessorList from "../Components/ProfessorList";
 
 export default function SearchResultsPage() {
   const [professors, setProfessors] = useState([]);
-  const [selectedDepartment, setSelectedDepartment] = useState("All");
+  const [selectedDepartment, setSelectedDepartment] = useState("הכל");
 
   const { search } = useParams();
 
@@ -29,29 +29,30 @@ export default function SearchResultsPage() {
     new Set(professors.map(professor => professor.department).filter(department => department))
   );
 
-  const filteredProfessors = selectedDepartment === "All"
+  const filteredProfessors = selectedDepartment === "הכל"
     ? professors
     : professors.filter(professor => professor.department === selectedDepartment);
 
   return (
     <div className="search-results-page">
-      <h2>{`${filteredProfessors.length} Professors were found`}</h2>
+      <h2 className="found-number" dir="rtl">{`נמצאו ${filteredProfessors.length} תוצאות`}</h2>
       <div className="department-filter">
-        <span>Department:</span>
         <select
           onChange={(e) => setSelectedDepartment(e.target.value)}
           className="department-select"
           id="department"
           name="department"
           value={selectedDepartment}
+          dir="rtl"
         >
-          <option value="All">All</option>
+          <option value="הכל">הכל</option>
           {uniqueDepartments.map((department) => (
             <option key={department} value={department}>
               {department}
             </option>
           ))}
         </select>
+        <span dir="rtl">מחלקה:</span>
       </div>
       <ProfessorList professors={filteredProfessors} />
     </div>

@@ -108,26 +108,49 @@ main {
   width: 90%;
   background-color: #f6f6f6;
   z-index: 4; /* Lower z-index to ensure it's below the h2 element */
+  padding: 10px;
 }
 
-.search-bar span {
-  margin-right: 10px; /* Space between the icon and the input */
-  font-size: 24px; /* Adjust the size of the icon */
-  padding-left: 10px;
+.input-container {
+  position: relative; /* Position relative to contain the label and input */
+  width: 100%;
 }
 
-.search-bar input {
+.input-container input {
   width: 100%; /* Adjust width as needed */
   padding: 10px;
   font-size: 16px;
   font-family: 'Lexend', sans-serif;
   color: #333333;
-  margin: 10px;
   outline: none;
   border: none;
   background-color: transparent;
   box-sizing: border-box;
+  transition: padding 0.3s ease, border-color 0.3s ease;
 }
+
+.input-container label {
+  position: absolute;
+  top: 6px; /* Adjust to align with input padding */
+  right: 10px;
+  font-size: 16px;
+  color: #333;
+  pointer-events: none;
+  transition: all 0.3s ease; /* Smooth transition for movement and size */
+  transform-origin: left center;
+  background: #f6f6f6; /* Match background color */
+  padding: 0 4px; /* Adjust padding to avoid overlapping */
+}
+
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+  top: -10px; /* Move label above input */
+  left: 10px;
+  font-size: 12px; /* Smaller font size for label */
+  color: #333;
+  background: #f6f6f6; /* Match background color */
+}
+
 
 
 .card-list {
@@ -202,15 +225,21 @@ main {
 }
 
 .search-results-page {
-  margin-top: 100px;
+  background-color: #F7E7DC;
+  padding-top: 100px;
   display: flex;
+  position: relative;
   flex-direction: column;
-  background-color: #FFF8F3;
-  margin-left: 100px;
+  height: 100vh;
+}
+
+.found-number{
+  position: absolute;
+  right: 0;
+  padding-right: 30px;
 }
 
 .search-header {
-  background-color: #FFF8F3;
   padding: 20px;
   text-align: center;
   border-bottom: 1px solid #ddd;
@@ -324,6 +353,10 @@ main {
   margin: 20px 0; /* Space around the filter */
   display: flex;
   align-items: center;
+  position:absolute;
+  right:0;
+  padding-top: 20px;
+  padding-right: 30px;
   gap: 10px; /* Space between the span and select */
 }
 
@@ -355,31 +388,9 @@ main {
   display: grid; /* Use CSS Grid layout */
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusts columns based on available space */
   gap: 20px; /* Space between items */
-  padding-top: 20px; /* Padding around the grid container */
+  padding-top: 90px; /* Padding around the grid container */
   padding-bottom:20px;
   justify-content: center; /* Center align the grid items */
-}
-
-.waveyTop {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  transform: rotate(180deg);
-  z-index: 2;
-}
-
-.waveyTop svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 150px;
-}
-
-.waveyTop .shape-fill {
-  fill: #FFFFFF;
 }
 
 .headHeader {
@@ -423,14 +434,6 @@ main {
   display: flex;
   justify-content: right;
   width: 85%;
-}
-
-.bottom-part{
-  /* background-image: url("./Assets/gardient-background.svg");
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-position: "center"; */
-
 }
 
 .bottom-part h1{
@@ -480,4 +483,21 @@ main {
 .listText {
   font-size: 16px; /* Adjust font size if needed */
   padding-right: 10px;
+}
+
+/* Define the animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply the animation */
+.image-background-animate {
+  animation: fadeIn 2s ease-out;
 }

@@ -17,15 +17,20 @@ export default function SearchBar({ onChange }) {
   }
 
   return (
-    <form className="search-bar" onSubmit={handleSubmit}>
-      <input
-        type="search"
-        placeholder="חפש את המרצה..."
-        value={query}
-        onChange={(e) => handleSearch(e.target.value)}
-        dir="rtl" // Set text direction to right-to-left
-      />
-      <span className="material-symbols-outlined">person</span>
-    </form>
+<form className="search-bar" onSubmit={handleSubmit}>
+  <div className="input-container">
+    <input
+      type="search"
+      id="search-input"
+      placeholder=" "
+      value={query}
+      onChange={(e) => handleSearch(e.target.value)}
+      dir="rtl" // Set text direction to right-to-left
+    />
+    <label dir="rtl" htmlFor="search-input">חפש את המרצה...</label>
+  </div>
+  <span className="material-symbols-outlined">person</span>
+</form>
+
   );
 }
