@@ -53,7 +53,7 @@ export default function ProfessorResult({ professor }) {
         <div className={`score-box ${scoreClass}`}>
           <div className="score-box-label">Rating</div>
           <div className="score-box-number">{score}{score-Math.floor(score)===0 && ".0"}</div>
-          <div className="score-box-reviews">{professor.num_reviews}55 reviews</div>
+          <div className="score-box-reviews">{professor.review_count} reviews</div>
         </div>
         <div className="professor-result-info">
           <h2 className="professor-result-name">{professor.name}</h2>

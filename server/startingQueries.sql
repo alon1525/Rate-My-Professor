@@ -16,6 +16,7 @@ CREATE TABLE professors (
     name VARCHAR(255) NOT NULL UNIQUE,
     department VARCHAR(255),
     total_avg FLOAT(5,2) -- Only total_avg field
+    review_count INT DEFAULT 0;
     -- Other professor fields
 );
 
@@ -54,61 +55,83 @@ INSERT INTO professors (name, department) VALUES
 -- Define triggers to update average ratings
 DELIMITER //
 
--- Trigger to update average after inserting a review
-CREATE TRIGGER update_professor_avg_after_insert
+-- Trigger to update average and review count after inserting a review
+CREATE TRIGGER update_professor_avg_and_count_after_insert
 AFTER INSERT ON reviews
 FOR EACH ROW
 BEGIN
     DECLARE avg_rating FLOAT(5,2);
+    DECLARE review_total INT;
 
     -- Calculate the average rating
     SELECT AVG(rating) INTO avg_rating
     FROM reviews
     WHERE professor_name = NEW.professor_name;
 
-    -- Update the professor's average rating
+    -- Calculate the total number of reviews
+    SELECT COUNT(*) INTO review_total
+    FROM reviews
+    WHERE professor_name = NEW.professor_name;
+
+    -- Update the professor's average rating and review count
     UPDATE professors
-    SET total_avg = avg_rating
+    SET total_avg = avg_rating,
+        review_count = review_total
     WHERE name = NEW.professor_name;
 END//
 
--- Trigger to update average after updating a review
-CREATE TRIGGER update_professor_avg_after_update
+-- Trigger to update average and review count after updating a review
+CREATE TRIGGER update_professor_avg_and_count_after_update
 AFTER UPDATE ON reviews
 FOR EACH ROW
 BEGIN
     DECLARE avg_rating FLOAT(5,2);
+    DECLARE review_total INT;
 
     -- Calculate the average rating
     SELECT AVG(rating) INTO avg_rating
     FROM reviews
     WHERE professor_name = OLD.professor_name;
 
-    -- Update the professor's average rating
+    -- Calculate the total number of reviews
+    SELECT COUNT(*) INTO review_total
+    FROM reviews
+    WHERE professor_name = OLD.professor_name;
+
+    -- Update the professor's average rating and review count
     UPDATE professors
-    SET total_avg = avg_rating
+    SET total_avg = avg_rating,
+        review_count = review_total
     WHERE name = OLD.professor_name;
 END//
 
--- Trigger to update average after deleting a review
-CREATE TRIGGER update_professor_avg_after_delete
+-- Trigger to update average and review count after deleting a review
+CREATE TRIGGER update_professor_avg_and_count_after_delete
 AFTER DELETE ON reviews
 FOR EACH ROW
 BEGIN
     DECLARE avg_rating FLOAT(5,2);
+    DECLARE review_total INT;
 
     -- Calculate the average rating
     SELECT AVG(rating) INTO avg_rating
     FROM reviews
     WHERE professor_name = OLD.professor_name;
 
-    -- Update the professor's average rating
+    -- Calculate the total number of reviews
+    SELECT COUNT(*) INTO review_total
+    FROM reviews
+    WHERE professor_name = OLD.professor_name;
+
+    -- Update the professor's average rating and review count
     UPDATE professors
-    SET total_avg = avg_rating
+    SET total_avg = avg_rating,
+        review_count = review_total
     WHERE name = OLD.professor_name;
 END//
 
 DELIMITER ;
+
 
 -- Insert sample data into users
 INSERT INTO users (email) VALUES

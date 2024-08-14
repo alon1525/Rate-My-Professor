@@ -35,9 +35,36 @@ db.connect((err) => {
 });
 
 
+app.get("/api/getTop5", async (req, res) => {
+
+  // SQL query to fetch top 5 professors based on total_avg and review_count
+  const query = `
+      SELECT name, department, total_avg, review_count
+      FROM professors
+      ORDER BY total_avg DESC, review_count DESC
+      LIMIT 6
+    `;
+
+  try {
+    db.query(query, (err, results) => {
+      if (err) {
+        // Error handling within the query callback
+        console.error("Error executing query:", err);
+        return res.status(500).send("Server error");
+      }
+      res.json(results);
+    });
+  } catch (error) {
+    // Catch any unexpected errors
+    console.error("Unexpected error:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+
 //fetch professors information
 app.get("/api/professors", async (req, res) => {
-  const searchQuery = req.query.search || "";
+  const searchQuery = req.query.search;
   const query = searchQuery
     ? "SELECT * FROM professors WHERE name LIKE ?"
     : "SELECT * FROM professors";

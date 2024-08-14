@@ -13,24 +13,28 @@ export default function SearchBar({ onChange }) {
 
   async function handleSubmit(e) {
     e.preventDefault(); // Prevents the default form submission
+
+    if (query.trim() === "") {
+      return; // Do nothing if the query is empty
+    }
+
     navigate(`/searchPage/${encodeURIComponent(query)}`);
   }
 
   return (
-<form className="search-bar" onSubmit={handleSubmit}>
-  <div className="input-container">
-    <input
-      type="search"
-      id="search-input"
-      placeholder=" "
-      value={query}
-      onChange={(e) => handleSearch(e.target.value)}
-      dir="rtl" // Set text direction to right-to-left
-    />
-    <label dir="rtl" htmlFor="search-input">חפש את המרצה...</label>
-  </div>
-  <span className="material-symbols-outlined">person</span>
-</form>
-
+    <form className="search-bar" onSubmit={handleSubmit}>
+      <div className="input-container">
+        <input
+          type="search"
+          id="search-input"
+          placeholder=" "
+          value={query}
+          onChange={(e) => handleSearch(e.target.value)}
+          dir="rtl"
+        />
+        <label dir="rtl" htmlFor="search-input">חפש את המרצה</label>
+      </div>
+      <span className="material-symbols-outlined">person</span>
+    </form>
   );
 }

@@ -11,7 +11,7 @@ function formatDate(date) {
 export default function Review({ review }) {
   return (
     <div className="review-container">
-      <h2 className="review-headline">Good Professor</h2>
+      <h2 className="review-headline">{review.header}</h2>
       <div className="review-score">
         <span className="score-label">Score:</span>
         <StarRating rating={review.rating} margin={"0px"} />
