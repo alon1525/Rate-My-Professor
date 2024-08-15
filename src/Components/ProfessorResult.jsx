@@ -3,40 +3,41 @@ import { Link } from "react-router-dom";
 
 export default function ProfessorResult({ professor }) {
   
-    const departmentEmojis = {
-        'Computer Science': '💻', // Laptop emoji
-        'Mathematics': '🔢', // Input numbers emoji
-        'Physics': '🔭', // Telescope emoji
-        'Chemistry': '🧪', // Test tube emoji
-        'Biology': '🧬', // DNA emoji
-        'Engineering': '🔧', // Wrench emoji
-        'Economics': '💹', // Chart increasing emoji
-        'History': '📜', // Scroll emoji
-        'Psychology': '🧠', // Brain emoji
-        'Linguistics': '🗣️', // Speaking head emoji
-        'Philosophy': '🧘', // Person in lotus position emoji
-        'Political Science': '🏛️', // Classical building emoji
-        'Sociology': '👥', // Busts in silhouette emoji
-        'Statistics': '📊', // Bar chart emoji
-        'Arts': '🎨', // Artist palette emoji
-        'Music': '🎵', // Musical note emoji
-        'Literature': '📚', // Books emoji
-        'Theater': '🎭', // Performing arts emoji
-        'Design': '🖌️', // Paintbrush emoji
-        'Architecture': '🏛️', // Classical building emoji
-        'Medicine': '⚕️', // Medical symbol emoji
-        'Law': '⚖️', // Balance scale emoji
-        'Education': '🏫', // School emoji
-        'Environmental Science': '🌍', // Globe showing Europe-Africa emoji
-        'Astronomy': '🌌', // Milky way emoji
-        'Geology': '🪨', // Rock emoji
-        'Veterinary Medicine': '🐾', // Paw prints emoji
-        'Agriculture': '🌾', // Sheaf of rice emoji
-        'Business': '💼', // Briefcase emoji
-        'Hospitality': '🍽️', // Fork and knife emoji
-        'Tourism': '🌍', // Globe emoji
-        'Biochemistry': '🧬🔬', // DNA and microscope emojis
-    };
+  const departmentEmojis = {
+    'מדעי המחשב': '💻', // Laptop emoji
+    'מתמטיקה': '🔢', // Input numbers emoji
+    'פיזיקה': '🔭', // Telescope emoji
+    'כימיה': '🧪', // Test tube emoji
+    'ביולוגיה': '🧬', // DNA emoji
+    'הנדסה': '🔧', // Wrench emoji
+    'כלכלה': '💹', // Chart increasing emoji
+    'היסטוריה': '📜', // Scroll emoji
+    'פסיכולוגיה': '🧠', // Brain emoji
+    'בלשנות': '🗣️', // Speaking head emoji
+    'פילוסופיה': '🧘', // Person in lotus position emoji
+    'מדע המדינה': '🏛️', // Classical building emoji
+    'סוציולוגיה': '👥', // Busts in silhouette emoji
+    'סטטיסטיקה': '📊', // Bar chart emoji
+    'אומניות': '🎨', // Artist palette emoji
+    'מוזיקה': '🎵', // Musical note emoji
+    'ספרות': '📚', // Books emoji
+    'תיאטרון': '🎭', // Performing arts emoji
+    'עיצוב': '🖌️', // Paintbrush emoji
+    'ארכיטקטורה': '🏛️', // Classical building emoji
+    'רפואה': '⚕️', // Medical symbol emoji
+    'משפטים': '⚖️', // Balance scale emoji
+    'חינוך': '🏫', // School emoji
+    'מדעי הסביבה': '🌍', // Globe showing Europe-Africa emoji
+    'אסטרונומיה': '🌌', // Milky way emoji
+    'גיאולוגיה': '🪨', // Rock emoji
+    'וטרינריה': '🐾', // Paw prints emoji
+    'חקלאות': '🌾', // Sheaf of rice emoji
+    'עסקים': '💼', // Briefcase emoji
+    'אירוח': '🍽️', // Fork and knife emoji
+    'תיירות': '🌍', // Globe emoji
+    'ביוכימיה': '🧬🔬', // DNA and microscope emojis
+};
+
     
   const departmentEmoji = departmentEmojis[professor.department] || '';
   const score = professor.total_avg;
@@ -50,14 +51,14 @@ export default function ProfessorResult({ professor }) {
   return (
     <Link to={`/professor/${professor.name}`} className="professor-result-link">
       <div className="professor-result-card">
-        <div className={`score-box ${scoreClass}`}>
-          <div className="score-box-label">Rating</div>
-          <div className="score-box-number">{score}{score-Math.floor(score)===0 && ".0"}</div>
-          <div className="score-box-reviews">{professor.review_count} reviews</div>
-        </div>
-        <div className="professor-result-info">
+        <div className="professor-result-info" dir="rtl">
           <h2 className="professor-result-name">{professor.name}</h2>
-          <p className="professor-result-department">{professor.department + " " +departmentEmoji}</p>
+          <p className="professor-result-department" >{ departmentEmoji+ " "  + professor.department}</p>
+        </div>
+        <div className={`score-box ${scoreClass}`}>
+          <div className="score-box-label">דירוג</div>
+          <div className="score-box-number">{score}{score-Math.floor(score)===0 && ".0"}</div>
+          <div className="score-box-reviews">ביקורות {professor.review_count} </div>
         </div>
       </div>
     </Link>

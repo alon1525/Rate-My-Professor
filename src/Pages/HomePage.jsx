@@ -32,15 +32,15 @@ export default function HomePage() {
   return (
     <div className="container">
       <Section height="100vh"></Section>
-      <h1 className="top-professor-text">Top Professors</h1>
+      <h1 className="top-professor-text" dir="rtl">המצטיינים</h1>
       <ProfessorList professors={professors} />
       <div className="picCards">
-        <PicCard picture={picture1} title={"Manage and edit your ratings"} />
+        <PicCard picture={picture1} title={"נהל וערוך את הדירוגים שלך"} />
         <PicCard
           picture={picture2}
-          title={"Your ratings are always anonymous"}
+          title={"הדירוגים הם בעילום שם"}
         />
-        <PicCard picture={picture3} title={"Search for your professor"} />   
+        <PicCard picture={picture3} title={"חפש את המרצה שלך"} />   
       </div>
     </div>
   );

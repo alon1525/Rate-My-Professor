@@ -15,8 +15,8 @@ CREATE TABLE professors (
     professor_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL UNIQUE,
     department VARCHAR(255),
-    total_avg FLOAT(5,2) -- Only total_avg field
-    review_count INT DEFAULT 0;
+    total_avg FLOAT(5,2), -- Only total_avg field
+    review_count INT DEFAULT 0
     -- Other professor fields
 );
 
@@ -36,21 +36,21 @@ CREATE TABLE reviews (
 
 -- Insert sample data into professors table
 INSERT INTO professors (name, department) VALUES
-('Dr. John Doe', 'Computer Science'),
-('Dr. Jane Smith', 'Mathematics'),
-('Dr. Emily Johnson', 'Physics'),
-('Dr. Michael Brown', 'Chemistry'),
-('Dr. Linda Davis', 'Biology'),
-('Dr. Sarah White', 'Engineering'),
-('Dr. David Lee', 'Economics'),
-('Dr. Laura Green', 'History'),
-('Dr. Thomas Adams', 'Biochemistry'),
-('Dr. Alice Miller', 'Psychology'),
-('Dr. Daniel Wilson', 'Linguistics'),
-('Dr. Rachel Clark', 'Philosophy'),
-('Dr. James Harris', 'Political Science'),
-('Dr. Megan Lewis', 'Sociology'),
-('Dr. Brian King', 'Statistics');
+("יוחנן דו", "מדעי המחשב"),
+("יוסף שמידט", "מתמטיקה"),
+("אמילי ג'ונסון", "פיזיקה"),
+("מיכאל בראון", "כימיה"),
+("לינדה דייוויס", "ביולוגיה"),
+("שרה ווייט", "הנדסה"),
+("דוד לי", "כלכלה"),
+("לורה גרין", "היסטוריה"),
+("תומס אדמס", "ביוכימיה"),
+("אליס מילר", "פסיכולוגיה"),
+("דניאל וילסון", "בלשנות"),
+("רחל קלארק", "פילוסופיה"),
+("ג'יימס האריס", "מדע המדינה"),
+("מייגן לואיס", "סוציולוגיה"),
+("בריאן קינג", "סטטיסטיקה");
 
 -- Define triggers to update average ratings
 DELIMITER //
@@ -157,40 +157,39 @@ INSERT INTO users (email) VALUES
 ('user20@post.bgu.ac.il');
 
 
--- Insert sample data into reviews
 INSERT INTO reviews (user_email, professor_name, rating, header, comment) VALUES
-('user1@post.bgu.ac.il', 'Dr. John Doe', 4, 'Good Teacher, Challenging Course', 'Very clear explanations, but the difficulty was higher.'),
-('user2@post.bgu.ac.il', 'Dr. John Doe', 5, 'Engaging and Well-Organized', 'Engaging lectures and well-organized.'),
-('user3@post.bgu.ac.il', 'Dr. John Doe', 3, 'Great Teaching, Tough Exams', 'Great teaching style but very tough exams.'),
-('user4@post.bgu.ac.il', 'Dr. Jane Smith', 4, 'Organized and Interesting', 'Very organized and interesting.'),
-('user5@post.bgu.ac.il', 'Dr. Jane Smith', 5, 'Excellent Clarity', 'Excellent clarity and well-structured course.'),
-('user6@post.bgu.ac.il', 'Dr. Jane Smith', 3, 'Good but Difficult', 'Good professor, but the difficulty is a bit high.'),
-('user7@post.bgu.ac.il', 'Dr. Emily Johnson', 5, 'Outstanding Professor', 'Outstanding professor! Everything was clear and interesting.'),
-('user8@post.bgu.ac.il', 'Dr. Emily Johnson', 4, 'Very Good', 'Very good, but the course could be more engaging.'),
-('user9@post.bgu.ac.il', 'Dr. Emily Johnson', 5, 'Best Professor Ever', 'The best professor I have ever had.'),
-('user10@post.bgu.ac.il', 'Dr. Michael Brown', 3, 'Average Teaching, Difficult Exams', 'Average teaching, but very difficult exams.'),
-('user11@post.bgu.ac.il', 'Dr. Michael Brown', 4, 'Good but Needs Improvement', 'Good professor but needs to improve organization.'),
-('user12@post.bgu.ac.il', 'Dr. Michael Brown', 5, 'Struggled with Clarity', 'Struggled with the clarity and difficulty.'),
-('user13@post.bgu.ac.il', 'Dr. Linda Davis', 4, 'Well-Organized and Clear', 'Well-organized and clear, but the course was a bit difficult.'),
-('user14@post.bgu.ac.il', 'Dr. Linda Davis', 5, 'Fantastic Professor', 'Fantastic professor! All aspects were great.'),
-('user15@post.bgu.ac.il', 'Dr. Linda Davis', 4, 'Good Overall', 'Good professor overall, but some parts were hard to follow.'),
-('user1@post.bgu.ac.il', 'Dr. Sarah White', 2, 'Needs Improvement', 'Not very engaging and the course materials were lacking.'),
-('user2@post.bgu.ac.il', 'Dr. Sarah White', 1, 'Very Disappointing', 'Unorganized and the lectures were confusing.'),
-('user3@post.bgu.ac.il', 'Dr. David Lee', 2, 'Below Average', 'The content was dry and the professor was not very interactive.'),
-('user4@post.bgu.ac.il', 'Dr. David Lee', 3, 'Average', 'Average performance; could use better explanations.'),
-('user5@post.bgu.ac.il', 'Dr. Laura Green', 4, 'Good but Could Improve', 'Good lectures but occasionally disorganized.'),
-('user6@post.bgu.ac.il', 'Dr. Laura Green', 2, 'Not Very Engaging', 'The content was there but the delivery was poor.'),
-('user7@post.bgu.ac.il', 'Dr. Thomas Adams', 3, 'Fairly Good', 'Fairly good but struggled with clarity in some areas.'),
-('user8@post.bgu.ac.il', 'Dr. Thomas Adams', 2, 'Needs Work', 'The explanations were often unclear and confusing.'),
-('user9@post.bgu.ac.il', 'Dr. Alice Miller', 4, 'Decent Course', 'Decent course but could be more engaging.'),
-('user10@post.bgu.ac.il', 'Dr. Alice Miller', 1, 'Very Poor', 'The course was very disorganized and hard to follow.'),
-('user11@post.bgu.ac.il', 'Dr. Daniel Wilson', 3, 'Okay', 'Okay overall but not very memorable.'),
-('user12@post.bgu.ac.il', 'Dr. Daniel Wilson', 2, 'Needs Improvement', 'Needs significant improvement in both teaching style and content.'),
-('user13@post.bgu.ac.il', 'Dr. Rachel Clark', 4, 'Good Professor', 'Good professor but could use better materials.'),
-('user14@post.bgu.ac.il', 'Dr. Rachel Clark', 1, 'Terrible Experience', 'Terrible experience; the lectures were unstructured and confusing.'),
-('user15@post.bgu.ac.il', 'Dr. James Harris', 5, 'Excellent', 'An excellent professor with great lectures and clear explanations.'),
-('user16@post.bgu.ac.il', 'Dr. James Harris', 2, 'Below Expectations', 'The professor did not meet expectations; content was often unengaging.'),
-('user17@post.bgu.ac.il', 'Dr. Megan Lewis', 3, 'Satisfactory', 'Satisfactory course but not exceptional.'),
-('user18@post.bgu.ac.il', 'Dr. Megan Lewis', 2, 'Needs Improvement', 'The course needs improvement in both content and presentation.'),
-('user19@post.bgu.ac.il', 'Dr. Brian King', 4, 'Good Course', 'Good course with clear explanations, though could use more examples.'),
-('user20@post.bgu.ac.il', 'Dr. Brian King', 1, 'Very Poor', 'Very poor course, lacked depth and clarity.');
+("user1@post.bgu.ac.il", "יוחנן דו", 4, "מורה טוב, קורס מאתגר", "הסברים ברורים מאוד, אך הקושי היה גבוה."),
+("user2@post.bgu.ac.il", "יוחנן דו", 5, "מרצה מרתק ומאורגן", "הרצאות מרתקות ומאורגנות היטב."),
+("user3@post.bgu.ac.il", "יוחנן דו", 3, "הוראה מצוינת, מבחנים קשים", "סגנון הוראה מצוין אך מבחנים קשים מאוד."),
+("user4@post.bgu.ac.il", "יוסף שמידט", 4, "מאורגן ומעניין", "מאורגן ומעניין מאוד."),
+("user5@post.bgu.ac.il", "יוסף שמידט", 5, "בהירות מצוינת", "בהירות מצוינת וקורס מובנה היטב."),
+("user6@post.bgu.ac.il", "יוסף שמידט", 3, "טוב אך קשה", "מורה טוב אך הקושי גבוה מדי."),
+("user7@post.bgu.ac.il", "אמילי ג'ונסון", 5, "מרצה יוצאת דופן", "מרצה יוצאת דופן! הכל היה ברור ומעניין."),
+("user8@post.bgu.ac.il", "אמילי ג'ונסון", 4, "טוב מאוד", "טוב מאוד, אך הקורס יכול להיות יותר מרתק."),
+("user9@post.bgu.ac.il", "אמילי ג'ונסון", 5, "המרצה הכי טוב שהיה לי", "המרצה הטוב ביותר שהיה לי אי פעם."),
+("user10@post.bgu.ac.il", "מיכאל בראון", 3, "הוראה ממוצעת, מבחנים קשים", "הוראה ממוצעת, אך מבחנים קשים מאוד."),
+("user11@post.bgu.ac.il", "מיכאל בראון", 4, "טוב אך דורש שיפור", "מורה טוב אך יש לשפר את הארגון."),
+("user12@post.bgu.ac.il", "מיכאל בראון", 5, "התמודדות עם בהירות", "התמודדות עם הבהירות והקושי."),
+("user13@post.bgu.ac.il", "לינדה דייוויס", 4, "מאורגן וברור", "מאורגן וברור, אך הקורס היה קצת קשה."),
+("user14@post.bgu.ac.il", "לינדה דייוויס", 5, "מרצה פנטסטי", "מרצה פנטסטי! כל ההיבטים היו מעולים."),
+("user15@post.bgu.ac.il", "לינדה דייוויס", 4, "טוב בסך הכל", "מורה טוב בסך הכל, אך חלקים מסוימים היו קשים להבנה."),
+("user1@post.bgu.ac.il", "שרה ווייט", 2, "דורש שיפור", "לא מאוד מרתק והחומרים היו חסרים."),
+("user2@post.bgu.ac.il", "שרה ווייט", 3, "הוראה סבירה", "הוראה סבירה, אך לא מאוד אינטראקטיבית."),
+("user3@post.bgu.ac.il", "שרה ווייט", 4, "טוב בסך הכל", "טוב בסך הכל, אך יש מקום לשיפור."),
+("user4@post.bgu.ac.il", "דוד לי", 5, "מעולה!", "מורה מצוין, שיעורים נהדרים."),
+("user5@post.bgu.ac.il", "דוד לי", 4, "טוב מאוד", "טוב מאוד, אך יש צורך בשיפור הקורס."),
+("user6@post.bgu.ac.il", "דוד לי", 5, "המרצה הטוב ביותר", "המרצה הטוב ביותר שאני מכיר."),
+("user7@post.bgu.ac.il", "לורה גרין", 3, "מורה טוב, אך קשה", "מורה טוב אך הקורס קשה מאוד."),
+("user8@post.bgu.ac.il", "לורה גרין", 4, "הוראה טובה", "הוראה טובה, אבל הקורס יכול להיות יותר מעניין."),
+("user9@post.bgu.ac.il", "לורה גרין", 5, "מעולה, מאוד מרתק", "מעולה ומאוד מרתק."),
+("user10@post.bgu.ac.il", "תומס אדמס", 3, "סביר, קורס מאתגר", "סביר, הקורס מאתגר מאוד."),
+("user11@post.bgu.ac.il", "תומס אדמס", 4, "הוראה ברמה גבוהה", "הוראה ברמה גבוהה, אך יש מקום לשיפור."),
+("user12@post.bgu.ac.il", "תומס אדמס", 5, "המרצה הטוב ביותר", "המרצה הטוב ביותר, מאוד מעניין."),
+("user13@post.bgu.ac.il", "אליס מילר", 4, "מורה טובה מאוד", "מורה טובה מאוד עם שיטות הוראה יעילות."),
+("user14@post.bgu.ac.il", "אליס מילר", 5, "מעולה, קורס מעניין", "מעולה! הקורס היה מאוד מעניין."),
+("user15@post.bgu.ac.il", "אליס מילר", 4, "טוב, אך יכול להיות טוב יותר", "טוב, אך יש מקום לשיפור בקורס."),
+("user16@post.bgu.ac.il", "דניאל וילסון", 3, "מורה סביר", "מורה סביר, אך יש מקום לשיפור."),
+("user17@post.bgu.ac.il", "דניאל וילסון", 4, "טוב מאוד", "טוב מאוד, אך החומרים יכולים להיות יותר ברורים."),
+("user18@post.bgu.ac.il", "דניאל וילסון", 5, "מורה מצוין", "מורה מצוין, שיעורים מעניינים מאוד."),
+("user19@post.bgu.ac.il", "רחל קלארק", 2, "דורש שיפור רב", "דורש שיפור רב, הקורס לא היה ברור."),
+("user20@post.bgu.ac.il", "רחל קלארק", 3, "סביר אך ניתן לשיפור", "סביר אך ניתן לשיפור מבחינת ההוראה והחומרים.");

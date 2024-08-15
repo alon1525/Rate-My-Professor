@@ -8,7 +8,7 @@ export default function PicCard({picture,title}) {
         src={picture}
         class="CTACard__CardImage-sc-1l1zcl0-1"
       ></img>
-      <div class="CTACard__CardText-sc-1l1zcl0-2">
+      <div class="CTACard__CardText-sc-1l1zcl0-2" dir="rtl">
         {title}
       </div>
     </div>
