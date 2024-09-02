@@ -83,7 +83,7 @@ const Section = ({ height = "200px" }) => {
             <SignInButton 
               isSquare={true} 
               text="חיפוש" 
-              where={query} // Pass query to SignInButton
+              where={`/searchPage/${encodeURIComponent(query)}`} // Pass query to SignInButton
               paddingRight={"20px"} 
               buttonPadding="18px 30px" 
             />

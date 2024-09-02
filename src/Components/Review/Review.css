@@ -53,6 +53,7 @@
     font-weight: bold;
     color: #2d3436;
     margin-bottom: 20px;  /* Ensure space between score and other elements */
+    gap:10px;
   }
   
   .score-label {
